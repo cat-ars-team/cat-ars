@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cat.dao.IProjectInfoDAO" >
+
+  <resultMap id="map" type="ProjectInfo" >
+    <result column="Id" property="id" jdbcType="INTEGER" />
+    <result column="ProID" property="proid" jdbcType="VARCHAR" />
+    <result column="ProType" property="protype" jdbcType="VARCHAR" />
+    <result column="RoleID" property="roleid" jdbcType="VARCHAR" />
+    <result column="Level" property="level" jdbcType="VARCHAR" />
+    <result column="CustCount" property="custcount" jdbcType="VARCHAR" />
+    <result column="ProTime" property="protime" jdbcType="VARCHAR" />
+    <result column="ProProvince" property="proprovince" jdbcType="VARCHAR" />
+    <result column="ProCity" property="procity" jdbcType="VARCHAR" />
+    <result column="RATI_YN" property="ratiYn" jdbcType="VARCHAR" />
+    <result column="CreateTime" property="createtime" jdbcType="DATE" />
+    <result column="CreateBy" property="createby" jdbcType="VARCHAR" />
+    <result column="UpdateTime" property="updatetime" jdbcType="DATE" />
+    <result column="UpdateBy" property="updateby" jdbcType="VARCHAR" />
+    <result column="CUST_STATE" property="custState" jdbcType="VARCHAR" />
+    <result column="fact_id" property="factId" jdbcType="VARCHAR" />
+    <result column="totalCust" property="totalcust" jdbcType="VARCHAR" />
+    <result column="appReim" property="appreim" jdbcType="VARCHAR" />
+     <result column="IsSpecilal" property="isspecilal" jdbcType="INTEGER" />
+    <result column="IsNusgo" property="isnusgo" jdbcType="INTEGER" />   
+     <result column="Remark" property="remark" jdbcType="VARCHAR" />
+     
+      <result column="bxStatus" property="bxstatus" jdbcType="INTEGER" />
+      <result column="isSubBXZL" property="issubbxzl" jdbcType="INTEGER" />
+      <result column="isSubCustInfo" property="issubcustinfo" jdbcType="INTEGER" />
+      <result column="isSubReceipt" property="issubreceipt" jdbcType="INTEGER" />
+      <result column="SpecialStatus" property="specialstatus" jdbcType="INTEGER" /> 
+      <result column="isSubjbxx" property="issubjbxx" jdbcType="INTEGER" /> 
+  </resultMap>
+  
+  <!-- id,proid,protype,roleid,level,custcount,protime,proprovince,procity,ratiYn,createtime,createby,
+  updatetime,updateby,custState,factId,totalcust,appreim isnusgo -->
+    
+  <!-- 分页查询 -->
+	<select id="list" parameterType="ProjectInfo" resultMap="map">
+		select  
+	  a.Id			 
+     ,a.ProID		 
+     ,a.ProType	 
+     ,a.RoleID	 
+     ,a.Level		 
+     ,a.CustCount	 
+     ,a.ProTime	 
+     ,c.AreaName   ProProvince 
+     ,d.AreaName   ProCity	 
+     ,a.RATI_YN	 
+     ,a.CreateTime 
+     ,a.CreateBy	 
+     ,a.UpdateTime 
+     ,a.UpdateBy	 
+     ,a.CUST_STATE 
+     ,a.fact_id	 
+     ,a.totalCust	 
+     ,a.appReim	 
+     ,a.IsSpecilal 
+     ,a.IsNusgo	,Remark  ,b.* from  projectinfo a  
+		inner JOIN isfproject_flow b on a.ProID=b.ProID
+		left join 	area_role c on a.ProProvince=c.AreaID and c.RoleName=#{roleid}
+		left JOIN 	area_role d on a.ProCity=d.AreaID and d.RoleName=#{roleid}
+		where 1=1 	
+		<if test="proid!=null and proid!=''">	
+			and a.ProID = #{proid}
+		</if>	
+		<if test="roleid!=null and roleid!='' and roleid!='超级管理员'">	
+			and a.RoleID = #{roleid}
+		</if>
+		<if test="level!=null and level!=''">
+			and a.Level = #{level}
+		</if>
+		
+		<if test="bxstatus!=null and bxstatus!=''">
+			and b.bxStatus = #{bxstatus}
+		</if>
+		
+		<if test="issubbxzl!=null and issubbxzl!=''">
+			and b.isSubBXZL = #{issubbxzl}
+		</if>
+		
+		<if test="issubcustinfo!=null and issubcustinfo!=''">
+			and b.isSubCustInfo = #{issubcustinfo}
+		</if>
+		
+		<if test=" issubreceipt!=null and issubreceipt!=''">
+			and b.isSubReceipt = #{issubreceipt}
+		</if>
+		 
+
+		order by a.createtime desc, a.id desc
+
+		<if test="start!=-1">
+			limit #{start},#{length}
+		</if>
+		
+
+	</select>
+	
+	
+	 
+	<select id="getByProID" parameterType="ProjectInfo" resultMap="map">
+		select * from  projectinfo a  inner JOIN isfproject_flow b on a.ProID=b.ProID		
+		where 1=1 	
+		<if test="proid!=null and proid!=''">	
+			and a.ProID = #{proid}
+		</if>	
+		limit 1
+	</select>
+	
+	
+	
+	
+
+	<!-- 返回总记录数 -->
+	<select id="getcount" parameterType="ProjectInfo" resultType="Long">
+		select count(1) from  projectinfo a  inner JOIN isfproject_flow b on a.ProID=b.ProID		
+		where 1=1 	
+		<if test="proid!=null and proid!=''">	
+			and a.ProID = #{proid}
+		</if>	
+		<if test="roleid!=null and roleid!=''">	
+			and a.RoleID = #{roleid}
+		</if>
+		<if test="level!=null and level!=''">
+			and a.Level = #{level}
+		</if>
+		
+		<if test="bxstatus!=null and bxstatus!=''">
+			and b.bxStatus = #{bxstatus}
+		</if>
+		
+		<if test="issubbxzl!=null and issubbxzl!=''">
+			and b.isSubBXZL = #{issubbxzl}
+		</if>
+		
+		<if test="issubcustinfo!=null and issubcustinfo!=''">
+			and b.isSubCustInfo = #{issubcustinfo}
+		</if>
+		
+		<if test=" issubreceipt!=null and issubreceipt!=''">
+			and b.isSubReceipt = #{issubreceipt}
+		</if>
+
+	</select>
+
+	<!-- 添加薪资发放记录 -->
+	<insert id="add" parameterType="ProjectInfo">
+		insert into projectinfo
+		(proid,protype,roleid,level,custcount,protime,proprovince,procity,
+		createtime,createby,IsSpecilal ,IsNusgo)
+		values(#{proid},#{protype},#{roleid},#{level},#{custcount},#{protime},#{proprovince},#{procity}
+		,#{createtime},#{createby},#{isspecilal},0)
+	</insert>
+  
+  
+  <delete id="delete" parameterType="ProjectInfo">
+  		delete from projectinfo where proid=#{proid}
+  	</delete>
+   
+  	
+  	
+  	<update id="update" parameterType="ProjectInfo">
+  		UPDATE projectinfo 
+  			<set>
+				 
+				 <if test="remark!=null">
+					Remark=#{remark},
+				</if>
+				
+				<if test="level!=null">
+					Level=#{level},
+				</if>
+				
+				<if test="custcount!=null">
+					CustCount=#{custcount},
+				</if>
+				<if test="updateby!=null">
+					UpdateBy=#{updateby},
+				</if>
+				
+				<if test="updatetime!=null">
+					UpdateTime=#{updatetime},
+				</if>
+				 
+				
+			</set>
+  		 	where ProID=#{proid}
+  	</update>
+  
+  
+</mapper>

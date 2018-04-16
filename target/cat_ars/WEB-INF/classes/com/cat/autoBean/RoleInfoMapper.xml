@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cat.autoBean.RoleInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.cat.autoBean.RoleInfo" >
+    <id column="role_id" property="roleId" jdbcType="INTEGER" />
+    <result column="role_name" property="roleName" jdbcType="VARCHAR" />
+    <result column="role_desc" property="roleDesc" jdbcType="VARCHAR" />
+    <result column="role_mark" property="roleMark" jdbcType="VARCHAR" />
+    <result column="IsSpecial" property="isspecial" jdbcType="INTEGER" />
+    <result column="CreateBy" property="createby" jdbcType="INTEGER" />
+    <result column="CreateTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="UpdateBy" property="updateby" jdbcType="INTEGER" />
+    <result column="UpdateTime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="DelFlag" property="delflag" jdbcType="INTEGER" />
+    <result column="Amount" property="amount" jdbcType="DOUBLE" />
+    <result column="RoleRate" property="rolerate" jdbcType="DOUBLE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    role_id, role_name, role_desc, role_mark, IsSpecial, CreateBy, CreateTime, UpdateBy, 
+    UpdateTime, DelFlag, Amount, RoleRate
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from role_info
+    where role_id = #{roleId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from role_info
+    where role_id = #{roleId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cat.autoBean.RoleInfo" >
+    insert into role_info (role_id, role_name, role_desc, 
+      role_mark, IsSpecial, CreateBy, 
+      CreateTime, UpdateBy, UpdateTime, 
+      DelFlag, Amount, RoleRate
+      )
+    values (#{roleId,jdbcType=INTEGER}, #{roleName,jdbcType=VARCHAR}, #{roleDesc,jdbcType=VARCHAR}, 
+      #{roleMark,jdbcType=VARCHAR}, #{isspecial,jdbcType=INTEGER}, #{createby,jdbcType=INTEGER}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{updateby,jdbcType=INTEGER}, #{updatetime,jdbcType=TIMESTAMP}, 
+      #{delflag,jdbcType=INTEGER}, #{amount,jdbcType=DOUBLE}, #{rolerate,jdbcType=DOUBLE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cat.autoBean.RoleInfo" >
+    insert into role_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="roleId != null" >
+        role_id,
+      </if>
+      <if test="roleName != null" >
+        role_name,
+      </if>
+      <if test="roleDesc != null" >
+        role_desc,
+      </if>
+      <if test="roleMark != null" >
+        role_mark,
+      </if>
+      <if test="isspecial != null" >
+        IsSpecial,
+      </if>
+      <if test="createby != null" >
+        CreateBy,
+      </if>
+      <if test="createtime != null" >
+        CreateTime,
+      </if>
+      <if test="updateby != null" >
+        UpdateBy,
+      </if>
+      <if test="updatetime != null" >
+        UpdateTime,
+      </if>
+      <if test="delflag != null" >
+        DelFlag,
+      </if>
+      <if test="amount != null" >
+        Amount,
+      </if>
+      <if test="rolerate != null" >
+        RoleRate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="roleId != null" >
+        #{roleId,jdbcType=INTEGER},
+      </if>
+      <if test="roleName != null" >
+        #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="roleDesc != null" >
+        #{roleDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="roleMark != null" >
+        #{roleMark,jdbcType=VARCHAR},
+      </if>
+      <if test="isspecial != null" >
+        #{isspecial,jdbcType=INTEGER},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateby != null" >
+        #{updateby,jdbcType=INTEGER},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delflag != null" >
+        #{delflag,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=DOUBLE},
+      </if>
+      <if test="rolerate != null" >
+        #{rolerate,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cat.autoBean.RoleInfo" >
+    update role_info
+    <set >
+      <if test="roleName != null" >
+        role_name = #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="roleDesc != null" >
+        role_desc = #{roleDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="roleMark != null" >
+        role_mark = #{roleMark,jdbcType=VARCHAR},
+      </if>
+      <if test="isspecial != null" >
+        IsSpecial = #{isspecial,jdbcType=INTEGER},
+      </if>
+      <if test="createby != null" >
+        CreateBy = #{createby,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateby != null" >
+        UpdateBy = #{updateby,jdbcType=INTEGER},
+      </if>
+      <if test="updatetime != null" >
+        UpdateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delflag != null" >
+        DelFlag = #{delflag,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null" >
+        Amount = #{amount,jdbcType=DOUBLE},
+      </if>
+      <if test="rolerate != null" >
+        RoleRate = #{rolerate,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where role_id = #{roleId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cat.autoBean.RoleInfo" >
+    update role_info
+    set role_name = #{roleName,jdbcType=VARCHAR},
+      role_desc = #{roleDesc,jdbcType=VARCHAR},
+      role_mark = #{roleMark,jdbcType=VARCHAR},
+      IsSpecial = #{isspecial,jdbcType=INTEGER},
+      CreateBy = #{createby,jdbcType=INTEGER},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      UpdateBy = #{updateby,jdbcType=INTEGER},
+      UpdateTime = #{updatetime,jdbcType=TIMESTAMP},
+      DelFlag = #{delflag,jdbcType=INTEGER},
+      Amount = #{amount,jdbcType=DOUBLE},
+      RoleRate = #{rolerate,jdbcType=DOUBLE}
+    where role_id = #{roleId,jdbcType=INTEGER}
+  </update>
+</mapper>

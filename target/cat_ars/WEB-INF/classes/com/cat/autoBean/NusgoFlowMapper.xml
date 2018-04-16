@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cat.autoBean.NusgoFlowMapper" >
+  <resultMap id="BaseResultMap" type="com.cat.autoBean.NusgoFlow" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="proid" property="proid" jdbcType="VARCHAR" />
+    <result column="EventProposal" property="eventproposal" jdbcType="INTEGER" />
+    <result column="SalesManager_First" property="salesmanagerFirst" jdbcType="INTEGER" />
+    <result column="admin_First" property="adminFirst" jdbcType="INTEGER" />
+    <result column="MarComManager_first" property="marcommanagerFirst" jdbcType="INTEGER" />
+    <result column="EmailToGCILeader_first" property="emailtogcileaderFirst" jdbcType="INTEGER" />
+    <result column="EndOfTheEvent" property="endoftheevent" jdbcType="INTEGER" />
+    <result column="SalesManager_Second" property="salesmanagerSecond" jdbcType="INTEGER" />
+    <result column="admin_Second" property="adminSecond" jdbcType="INTEGER" />
+    <result column="MarComManager_Second" property="marcommanagerSecond" jdbcType="INTEGER" />
+    <result column="GCILeader_Second" property="gcileaderSecond" jdbcType="INTEGER" />
+    <result column="CreateBy" property="createby" jdbcType="VARCHAR" />
+    <result column="CreateDate" property="createdate" jdbcType="TIMESTAMP" />
+    <result column="UpdateBy" property="updateby" jdbcType="VARCHAR" />
+    <result column="UpdateDate" property="updatedate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, proid, EventProposal, SalesManager_First, admin_First, MarComManager_first, EmailToGCILeader_first, 
+    EndOfTheEvent, SalesManager_Second, admin_Second, MarComManager_Second, GCILeader_Second, 
+    CreateBy, CreateDate, UpdateBy, UpdateDate
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from nusgo_flow
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from nusgo_flow
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cat.autoBean.NusgoFlow" >
+    insert into nusgo_flow (id, proid, EventProposal, 
+      SalesManager_First, admin_First, MarComManager_first, 
+      EmailToGCILeader_first, EndOfTheEvent, SalesManager_Second, 
+      admin_Second, MarComManager_Second, GCILeader_Second, 
+      CreateBy, CreateDate, UpdateBy, 
+      UpdateDate)
+    values (#{id,jdbcType=INTEGER}, #{proid,jdbcType=VARCHAR}, #{eventproposal,jdbcType=INTEGER}, 
+      #{salesmanagerFirst,jdbcType=INTEGER}, #{adminFirst,jdbcType=INTEGER}, #{marcommanagerFirst,jdbcType=INTEGER}, 
+      #{emailtogcileaderFirst,jdbcType=INTEGER}, #{endoftheevent,jdbcType=INTEGER}, #{salesmanagerSecond,jdbcType=INTEGER}, 
+      #{adminSecond,jdbcType=INTEGER}, #{marcommanagerSecond,jdbcType=INTEGER}, #{gcileaderSecond,jdbcType=INTEGER}, 
+      #{createby,jdbcType=VARCHAR}, #{createdate,jdbcType=TIMESTAMP}, #{updateby,jdbcType=VARCHAR}, 
+      #{updatedate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cat.autoBean.NusgoFlow" >
+    insert into nusgo_flow
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="proid != null" >
+        proid,
+      </if>
+      <if test="eventproposal != null" >
+        EventProposal,
+      </if>
+      <if test="salesmanagerFirst != null" >
+        SalesManager_First,
+      </if>
+      <if test="adminFirst != null" >
+        admin_First,
+      </if>
+      <if test="marcommanagerFirst != null" >
+        MarComManager_first,
+      </if>
+      <if test="emailtogcileaderFirst != null" >
+        EmailToGCILeader_first,
+      </if>
+      <if test="endoftheevent != null" >
+        EndOfTheEvent,
+      </if>
+      <if test="salesmanagerSecond != null" >
+        SalesManager_Second,
+      </if>
+      <if test="adminSecond != null" >
+        admin_Second,
+      </if>
+      <if test="marcommanagerSecond != null" >
+        MarComManager_Second,
+      </if>
+      <if test="gcileaderSecond != null" >
+        GCILeader_Second,
+      </if>
+      <if test="createby != null" >
+        CreateBy,
+      </if>
+      <if test="createdate != null" >
+        CreateDate,
+      </if>
+      <if test="updateby != null" >
+        UpdateBy,
+      </if>
+      <if test="updatedate != null" >
+        UpdateDate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="proid != null" >
+        #{proid,jdbcType=VARCHAR},
+      </if>
+      <if test="eventproposal != null" >
+        #{eventproposal,jdbcType=INTEGER},
+      </if>
+      <if test="salesmanagerFirst != null" >
+        #{salesmanagerFirst,jdbcType=INTEGER},
+      </if>
+      <if test="adminFirst != null" >
+        #{adminFirst,jdbcType=INTEGER},
+      </if>
+      <if test="marcommanagerFirst != null" >
+        #{marcommanagerFirst,jdbcType=INTEGER},
+      </if>
+      <if test="emailtogcileaderFirst != null" >
+        #{emailtogcileaderFirst,jdbcType=INTEGER},
+      </if>
+      <if test="endoftheevent != null" >
+        #{endoftheevent,jdbcType=INTEGER},
+      </if>
+      <if test="salesmanagerSecond != null" >
+        #{salesmanagerSecond,jdbcType=INTEGER},
+      </if>
+      <if test="adminSecond != null" >
+        #{adminSecond,jdbcType=INTEGER},
+      </if>
+      <if test="marcommanagerSecond != null" >
+        #{marcommanagerSecond,jdbcType=INTEGER},
+      </if>
+      <if test="gcileaderSecond != null" >
+        #{gcileaderSecond,jdbcType=INTEGER},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateby != null" >
+        #{updateby,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null" >
+        #{updatedate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cat.autoBean.NusgoFlow" >
+    update nusgo_flow
+    <set >
+      <if test="proid != null" >
+        proid = #{proid,jdbcType=VARCHAR},
+      </if>
+      <if test="eventproposal != null" >
+        EventProposal = #{eventproposal,jdbcType=INTEGER},
+      </if>
+      <if test="salesmanagerFirst != null" >
+        SalesManager_First = #{salesmanagerFirst,jdbcType=INTEGER},
+      </if>
+      <if test="adminFirst != null" >
+        admin_First = #{adminFirst,jdbcType=INTEGER},
+      </if>
+      <if test="marcommanagerFirst != null" >
+        MarComManager_first = #{marcommanagerFirst,jdbcType=INTEGER},
+      </if>
+      <if test="emailtogcileaderFirst != null" >
+        EmailToGCILeader_first = #{emailtogcileaderFirst,jdbcType=INTEGER},
+      </if>
+      <if test="endoftheevent != null" >
+        EndOfTheEvent = #{endoftheevent,jdbcType=INTEGER},
+      </if>
+      <if test="salesmanagerSecond != null" >
+        SalesManager_Second = #{salesmanagerSecond,jdbcType=INTEGER},
+      </if>
+      <if test="adminSecond != null" >
+        admin_Second = #{adminSecond,jdbcType=INTEGER},
+      </if>
+      <if test="marcommanagerSecond != null" >
+        MarComManager_Second = #{marcommanagerSecond,jdbcType=INTEGER},
+      </if>
+      <if test="gcileaderSecond != null" >
+        GCILeader_Second = #{gcileaderSecond,jdbcType=INTEGER},
+      </if>
+      <if test="createby != null" >
+        CreateBy = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        CreateDate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateby != null" >
+        UpdateBy = #{updateby,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null" >
+        UpdateDate = #{updatedate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cat.autoBean.NusgoFlow" >
+    update nusgo_flow
+    set proid = #{proid,jdbcType=VARCHAR},
+      EventProposal = #{eventproposal,jdbcType=INTEGER},
+      SalesManager_First = #{salesmanagerFirst,jdbcType=INTEGER},
+      admin_First = #{adminFirst,jdbcType=INTEGER},
+      MarComManager_first = #{marcommanagerFirst,jdbcType=INTEGER},
+      EmailToGCILeader_first = #{emailtogcileaderFirst,jdbcType=INTEGER},
+      EndOfTheEvent = #{endoftheevent,jdbcType=INTEGER},
+      SalesManager_Second = #{salesmanagerSecond,jdbcType=INTEGER},
+      admin_Second = #{adminSecond,jdbcType=INTEGER},
+      MarComManager_Second = #{marcommanagerSecond,jdbcType=INTEGER},
+      GCILeader_Second = #{gcileaderSecond,jdbcType=INTEGER},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      CreateDate = #{createdate,jdbcType=TIMESTAMP},
+      UpdateBy = #{updateby,jdbcType=VARCHAR},
+      UpdateDate = #{updatedate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

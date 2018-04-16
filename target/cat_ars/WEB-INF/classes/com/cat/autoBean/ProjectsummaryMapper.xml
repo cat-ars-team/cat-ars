@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cat.autoBean.ProjectsummaryMapper" >
+  <resultMap id="BaseResultMap" type="com.cat.autoBean.Projectsummary" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="PRO_ID" property="proId" jdbcType="VARCHAR" />
+    <result column="RoleName" property="rolename" jdbcType="VARCHAR" />
+    <result column="PRO_TYPE" property="proType" jdbcType="VARCHAR" />
+    <result column="PRO_LEVEL" property="proLevel" jdbcType="VARCHAR" />
+    <result column="CUST_NUM" property="custNum" jdbcType="VARCHAR" />
+    <result column="PRO_DATE" property="proDate" jdbcType="VARCHAR" />
+    <result column="PRO_PLACE" property="proPlace" jdbcType="VARCHAR" />
+    <result column="PRO_PLACED" property="proPlaced" jdbcType="VARCHAR" />
+    <result column="PRDC_SUPP" property="prdcSupp" jdbcType="VARCHAR" />
+    <result column="MAC_MANG" property="macMang" jdbcType="VARCHAR" />
+    <result column="DEMO_MAC" property="demoMac" jdbcType="VARCHAR" />
+    <result column="RAT_USED" property="ratUsed" jdbcType="VARCHAR" />
+    <result column="CAT_FL" property="catFl" jdbcType="VARCHAR" />
+    <result column="CreateTime" property="createtime" jdbcType="DATE" />
+    <result column="CreateBy" property="createby" jdbcType="VARCHAR" />
+    <result column="UpdateTime" property="updatetime" jdbcType="DATE" />
+    <result column="UpdateBy" property="updateby" jdbcType="VARCHAR" />
+    <result column="TOTAL_CUST" property="totalCust" jdbcType="VARCHAR" />
+    <result column="APP_REIM" property="appReim" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, PRO_ID, RoleName, PRO_TYPE, PRO_LEVEL, CUST_NUM, PRO_DATE, PRO_PLACE, PRO_PLACED, 
+    PRDC_SUPP, MAC_MANG, DEMO_MAC, RAT_USED, CAT_FL, CreateTime, CreateBy, UpdateTime, 
+    UpdateBy, TOTAL_CUST, APP_REIM
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from projectsummary
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from projectsummary
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cat.autoBean.Projectsummary" >
+    insert into projectsummary (ID, PRO_ID, RoleName, 
+      PRO_TYPE, PRO_LEVEL, CUST_NUM, 
+      PRO_DATE, PRO_PLACE, PRO_PLACED, 
+      PRDC_SUPP, MAC_MANG, DEMO_MAC, 
+      RAT_USED, CAT_FL, CreateTime, 
+      CreateBy, UpdateTime, UpdateBy, 
+      TOTAL_CUST, APP_REIM)
+    values (#{id,jdbcType=INTEGER}, #{proId,jdbcType=VARCHAR}, #{rolename,jdbcType=VARCHAR}, 
+      #{proType,jdbcType=VARCHAR}, #{proLevel,jdbcType=VARCHAR}, #{custNum,jdbcType=VARCHAR}, 
+      #{proDate,jdbcType=VARCHAR}, #{proPlace,jdbcType=VARCHAR}, #{proPlaced,jdbcType=VARCHAR}, 
+      #{prdcSupp,jdbcType=VARCHAR}, #{macMang,jdbcType=VARCHAR}, #{demoMac,jdbcType=VARCHAR}, 
+      #{ratUsed,jdbcType=VARCHAR}, #{catFl,jdbcType=VARCHAR}, #{createtime,jdbcType=DATE}, 
+      #{createby,jdbcType=VARCHAR}, #{updatetime,jdbcType=DATE}, #{updateby,jdbcType=VARCHAR}, 
+      #{totalCust,jdbcType=VARCHAR}, #{appReim,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cat.autoBean.Projectsummary" >
+    insert into projectsummary
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="proId != null" >
+        PRO_ID,
+      </if>
+      <if test="rolename != null" >
+        RoleName,
+      </if>
+      <if test="proType != null" >
+        PRO_TYPE,
+      </if>
+      <if test="proLevel != null" >
+        PRO_LEVEL,
+      </if>
+      <if test="custNum != null" >
+        CUST_NUM,
+      </if>
+      <if test="proDate != null" >
+        PRO_DATE,
+      </if>
+      <if test="proPlace != null" >
+        PRO_PLACE,
+      </if>
+      <if test="proPlaced != null" >
+        PRO_PLACED,
+      </if>
+      <if test="prdcSupp != null" >
+        PRDC_SUPP,
+      </if>
+      <if test="macMang != null" >
+        MAC_MANG,
+      </if>
+      <if test="demoMac != null" >
+        DEMO_MAC,
+      </if>
+      <if test="ratUsed != null" >
+        RAT_USED,
+      </if>
+      <if test="catFl != null" >
+        CAT_FL,
+      </if>
+      <if test="createtime != null" >
+        CreateTime,
+      </if>
+      <if test="createby != null" >
+        CreateBy,
+      </if>
+      <if test="updatetime != null" >
+        UpdateTime,
+      </if>
+      <if test="updateby != null" >
+        UpdateBy,
+      </if>
+      <if test="totalCust != null" >
+        TOTAL_CUST,
+      </if>
+      <if test="appReim != null" >
+        APP_REIM,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="proId != null" >
+        #{proId,jdbcType=VARCHAR},
+      </if>
+      <if test="rolename != null" >
+        #{rolename,jdbcType=VARCHAR},
+      </if>
+      <if test="proType != null" >
+        #{proType,jdbcType=VARCHAR},
+      </if>
+      <if test="proLevel != null" >
+        #{proLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="custNum != null" >
+        #{custNum,jdbcType=VARCHAR},
+      </if>
+      <if test="proDate != null" >
+        #{proDate,jdbcType=VARCHAR},
+      </if>
+      <if test="proPlace != null" >
+        #{proPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="proPlaced != null" >
+        #{proPlaced,jdbcType=VARCHAR},
+      </if>
+      <if test="prdcSupp != null" >
+        #{prdcSupp,jdbcType=VARCHAR},
+      </if>
+      <if test="macMang != null" >
+        #{macMang,jdbcType=VARCHAR},
+      </if>
+      <if test="demoMac != null" >
+        #{demoMac,jdbcType=VARCHAR},
+      </if>
+      <if test="ratUsed != null" >
+        #{ratUsed,jdbcType=VARCHAR},
+      </if>
+      <if test="catFl != null" >
+        #{catFl,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=DATE},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=DATE},
+      </if>
+      <if test="updateby != null" >
+        #{updateby,jdbcType=VARCHAR},
+      </if>
+      <if test="totalCust != null" >
+        #{totalCust,jdbcType=VARCHAR},
+      </if>
+      <if test="appReim != null" >
+        #{appReim,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cat.autoBean.Projectsummary" >
+    update projectsummary
+    <set >
+      <if test="proId != null" >
+        PRO_ID = #{proId,jdbcType=VARCHAR},
+      </if>
+      <if test="rolename != null" >
+        RoleName = #{rolename,jdbcType=VARCHAR},
+      </if>
+      <if test="proType != null" >
+        PRO_TYPE = #{proType,jdbcType=VARCHAR},
+      </if>
+      <if test="proLevel != null" >
+        PRO_LEVEL = #{proLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="custNum != null" >
+        CUST_NUM = #{custNum,jdbcType=VARCHAR},
+      </if>
+      <if test="proDate != null" >
+        PRO_DATE = #{proDate,jdbcType=VARCHAR},
+      </if>
+      <if test="proPlace != null" >
+        PRO_PLACE = #{proPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="proPlaced != null" >
+        PRO_PLACED = #{proPlaced,jdbcType=VARCHAR},
+      </if>
+      <if test="prdcSupp != null" >
+        PRDC_SUPP = #{prdcSupp,jdbcType=VARCHAR},
+      </if>
+      <if test="macMang != null" >
+        MAC_MANG = #{macMang,jdbcType=VARCHAR},
+      </if>
+      <if test="demoMac != null" >
+        DEMO_MAC = #{demoMac,jdbcType=VARCHAR},
+      </if>
+      <if test="ratUsed != null" >
+        RAT_USED = #{ratUsed,jdbcType=VARCHAR},
+      </if>
+      <if test="catFl != null" >
+        CAT_FL = #{catFl,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        CreateTime = #{createtime,jdbcType=DATE},
+      </if>
+      <if test="createby != null" >
+        CreateBy = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        UpdateTime = #{updatetime,jdbcType=DATE},
+      </if>
+      <if test="updateby != null" >
+        UpdateBy = #{updateby,jdbcType=VARCHAR},
+      </if>
+      <if test="totalCust != null" >
+        TOTAL_CUST = #{totalCust,jdbcType=VARCHAR},
+      </if>
+      <if test="appReim != null" >
+        APP_REIM = #{appReim,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cat.autoBean.Projectsummary" >
+    update projectsummary
+    set PRO_ID = #{proId,jdbcType=VARCHAR},
+      RoleName = #{rolename,jdbcType=VARCHAR},
+      PRO_TYPE = #{proType,jdbcType=VARCHAR},
+      PRO_LEVEL = #{proLevel,jdbcType=VARCHAR},
+      CUST_NUM = #{custNum,jdbcType=VARCHAR},
+      PRO_DATE = #{proDate,jdbcType=VARCHAR},
+      PRO_PLACE = #{proPlace,jdbcType=VARCHAR},
+      PRO_PLACED = #{proPlaced,jdbcType=VARCHAR},
+      PRDC_SUPP = #{prdcSupp,jdbcType=VARCHAR},
+      MAC_MANG = #{macMang,jdbcType=VARCHAR},
+      DEMO_MAC = #{demoMac,jdbcType=VARCHAR},
+      RAT_USED = #{ratUsed,jdbcType=VARCHAR},
+      CAT_FL = #{catFl,jdbcType=VARCHAR},
+      CreateTime = #{createtime,jdbcType=DATE},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      UpdateTime = #{updatetime,jdbcType=DATE},
+      UpdateBy = #{updateby,jdbcType=VARCHAR},
+      TOTAL_CUST = #{totalCust,jdbcType=VARCHAR},
+      APP_REIM = #{appReim,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

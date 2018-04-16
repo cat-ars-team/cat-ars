@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cat.dao.IProjectCustInfoDAO" >
+
+  <resultMap id="map" type="ProjectCustInfo" >
+    <result column="Id" property="id" jdbcType="INTEGER" />
+    <result column="CustID" property="custid" jdbcType="VARCHAR" />
+    <result column="CustName" property="custname" jdbcType="VARCHAR" />
+    <result column="CustMobile" property="custmobile" jdbcType="VARCHAR" />
+    <result column="ProID" property="proid" jdbcType="VARCHAR" />
+    <result column="MAC_CONN" property="macConn" jdbcType="VARCHAR" />
+    <result column="BUY_YN" property="buyYn" jdbcType="VARCHAR" />
+    <result column="CUST_SAT" property="custSat" jdbcType="VARCHAR" />
+    <result column="AGNT_FOLUP" property="agntFolup" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="CreateTime" property="createtime" jdbcType="DATE" />
+    <result column="CreateBy" property="createby" jdbcType="VARCHAR" />
+    <result column="UpdateTime" property="updatetime" jdbcType="DATE" />
+    <result column="UpdateBy" property="updateby" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <select id="GetListByProID" parameterType="ProjectCustInfo"  resultMap="map" >
+  	select * from projectcustinfo  where proID=#{proid}
+  		<if test="start!=-1">
+			limit #{start},#{length}
+		</if>
+  </select>
+  
+  <select id="getcount" parameterType="string" resultType="Long">
+  	select count(1) from projectcustinfo  where proID=#{proid}
+  </select>
+  
+  <insert id="add" parameterType="ProjectCustInfo" >
+    insert into projectcustinfo (  CustID, CustName, 
+      CustMobile, ProID, MAC_CONN, 
+      BUY_YN, CUST_SAT, AGNT_FOLUP, 
+      REMARK, CreateTime, CreateBy, 
+      UpdateTime, UpdateBy)
+    values ( #{custid,jdbcType=VARCHAR}, #{custname,jdbcType=VARCHAR}, 
+      #{custmobile,jdbcType=VARCHAR}, #{proid,jdbcType=VARCHAR}, #{macConn,jdbcType=VARCHAR}, 
+      #{buyYn,jdbcType=VARCHAR}, #{custSat,jdbcType=VARCHAR}, #{agntFolup,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{createtime,jdbcType=DATE}, #{createby,jdbcType=VARCHAR}, 
+      #{updatetime,jdbcType=DATE}, #{updateby,jdbcType=VARCHAR})
+  </insert>
+  
+  	<delete id="delete" parameterType="ProjectInfo">
+  		delete from projectcustinfo where proid=#{proid}
+  	</delete>
+
+ </mapper>

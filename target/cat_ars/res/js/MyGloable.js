@@ -1,0 +1,11 @@
+/**
+ * 
+ */
+$("table").delegate("tr","mouseover",function(){  
+        $(this).addClass("tr-mouseover")  
+        //$(this).css("background-color","#FC3");  
+    });   
+$("table").delegate("tr","mouseout",function(){  
+    $(this).removeClass("tr-mouseover");  
+    //$(this).css("background-color","#FC3");  
+}); 

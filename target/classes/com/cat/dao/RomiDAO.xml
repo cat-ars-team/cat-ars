@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cat.dao.IRomiDAO" >
+  <resultMap id="map" type="Romi" >
+     <result column="ID" property="id" jdbcType="INTEGER" />
+    <result column="AGNT_ID" property="agntId" jdbcType="VARCHAR" />
+    <result column="PRO_ID" property="proId" jdbcType="VARCHAR" />
+    <result column="CURR_CUST" property="currCust" jdbcType="VARCHAR" />
+    <result column="POTEN_CUST" property="potenCust" jdbcType="VARCHAR" />
+    <result column="REGIS_CUST" property="regisCust" jdbcType="VARCHAR" />
+    <result column="NEW_SALELD" property="newSaleld" jdbcType="VARCHAR" />
+    <result column="SALELD_CONRATE" property="saleldConrate" jdbcType="VARCHAR" />
+    <result column="DISC_MAC" property="discMac" jdbcType="VARCHAR" />
+    <result column="DETE_QUA" property="deteQua" jdbcType="VARCHAR" />
+    <result column="FORM_PLAN" property="formPlan" jdbcType="VARCHAR" />
+    <result column="DEVE_PROG" property="deveProg" jdbcType="VARCHAR" />
+    <result column="OPEN_OPPOR" property="openOppor" jdbcType="VARCHAR" />
+    <result column="WIN_ORDER" property="winOrder" jdbcType="VARCHAR" />
+    <result column="LOST_SALES" property="lostSales" jdbcType="VARCHAR" />
+    <result column="NO_TRANS" property="noTrans" jdbcType="VARCHAR" />
+    <result column="TOTAL_MAC" property="totalMac" jdbcType="VARCHAR" />
+    <result column="MAC_GEN_RATE" property="macGenRate" jdbcType="VARCHAR" />
+    <result column="DOD_CUSTNUM" property="dodCustnum" jdbcType="VARCHAR" />
+    <result column="CreateTime" property="createtime" jdbcType="DATE" />
+    <result column="CreateBy" property="createby" jdbcType="INTEGER" />
+    <result column="UpdateTime" property="updatetime" jdbcType="DATE" />
+    <result column="UpdateBy" property="updateby" jdbcType="INTEGER" />
+    <result column="WIN_ORDERS" property="winOrders" jdbcType="VARCHAR" />
+  </resultMap>
+  <insert id="add" parameterType="map" >
+    insert into romi ( AGNT_ID, PRO_ID, 
+      CURR_CUST, POTEN_CUST, REGIS_CUST, 
+      NEW_SALELD, SALELD_CONRATE, DISC_MAC, 
+      DETE_QUA, FORM_PLAN, DEVE_PROG, 
+      OPEN_OPPOR, WIN_ORDER, LOST_SALES, 
+      NO_TRANS, TOTAL_MAC, MAC_GEN_RATE, 
+      DOD_CUSTNUM, CreateTime, CreateBy, 
+      UpdateTime, UpdateBy, WIN_ORDERS
+      )
+    values (#{agntId,jdbcType=VARCHAR}, #{proId,jdbcType=VARCHAR}, 
+      #{currCust,jdbcType=VARCHAR}, #{potenCust,jdbcType=VARCHAR}, #{regisCust,jdbcType=VARCHAR}, 
+      #{newSaleld,jdbcType=VARCHAR}, #{saleldConrate,jdbcType=VARCHAR}, #{discMac,jdbcType=VARCHAR}, 
+      #{deteQua,jdbcType=VARCHAR}, #{formPlan,jdbcType=VARCHAR}, #{deveProg,jdbcType=VARCHAR}, 
+      #{openOppor,jdbcType=VARCHAR}, #{winOrder,jdbcType=VARCHAR}, #{lostSales,jdbcType=VARCHAR}, 
+      #{noTrans,jdbcType=VARCHAR}, #{totalMac,jdbcType=VARCHAR}, #{macGenRate,jdbcType=VARCHAR}, 
+      #{dodCustnum,jdbcType=VARCHAR}, #{createtime,jdbcType=DATE}, #{createby,jdbcType=INTEGER}, 
+      #{updatetime,jdbcType=DATE}, #{updateby,jdbcType=INTEGER}, #{winOrders,jdbcType=VARCHAR}
+      )
+  </insert>
+  
+  
+  <delete id="delete" parameterType="Romi">
+  		delete from romi where PRO_ID=#{proId}
+  	</delete>
+  	
+  	
+  	<select id="getbyproid" parameterType="Romi" resultMap="map">
+			select * from romi where PRO_ID=#{proId}
+	</select>
+  
+  </mapper>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cat.dao.IProjectFileDAO" >
+  <resultMap id="map" type="ProjectFile" >
+    <id column="Id" property="id" jdbcType="INTEGER" />
+    <result column="FIELD_NAME" property="fieldName" jdbcType="VARCHAR" />
+    <result column="FIELD_ID" property="fieldId" jdbcType="VARCHAR" />
+    <result column="FIELD_TYPE" property="fieldType" jdbcType="VARCHAR" />
+    <result column="FIELD_ARC" property="fieldArc" jdbcType="VARCHAR" />
+    <result column="UPLOAD_TIME" property="uploadTime" jdbcType="DATE" />
+    <result column="DOWN_TIME" property="downTime" jdbcType="DATE" />
+    <result column="CreateTime" property="createtime" jdbcType="DATE" />
+    <result column="CreateBy" property="createby" jdbcType="INTEGER" />
+    <result column="UpdateTime" property="updatetime" jdbcType="DATE" />
+    <result column="UpdateBy" property="updateby" jdbcType="INTEGER" />
+    <result column="PRO_ID" property="proId" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <sql id="allColumns" >
+    Id, FIELD_NAME, FIELD_ID, FIELD_TYPE, FIELD_ARC, UPLOAD_TIME, DOWN_TIME, CreateTime, 
+    CreateBy, UpdateTime, UpdateBy, PRO_ID
+  </sql>
+  <select id="getbyproid" resultMap="map" parameterType="ProjectFile" >
+    select 
+    <include refid="allColumns" />
+    from projectfile
+    where PRO_ID = #{proId}
+  </select>  
+  
+  
+  
+  <insert id="add" parameterType="ProjectFile" >
+    insert into projectfile ( FIELD_NAME, FIELD_ID, 
+      FIELD_TYPE, FIELD_ARC, UPLOAD_TIME, 
+      DOWN_TIME, CreateTime, CreateBy, 
+      UpdateTime, UpdateBy, PRO_ID
+      )
+    values ( #{fieldName,jdbcType=VARCHAR}, #{fieldId,jdbcType=VARCHAR}, 
+      #{fieldType,jdbcType=VARCHAR}, #{fieldArc,jdbcType=VARCHAR}, #{uploadTime,jdbcType=DATE}, 
+      #{downTime,jdbcType=DATE}, #{createtime,jdbcType=DATE}, #{createby,jdbcType=INTEGER}, 
+      #{updatetime,jdbcType=DATE}, #{updateby,jdbcType=INTEGER}, #{proId,jdbcType=VARCHAR}
+      )
+  </insert>
+  
+  
+  
+  <delete id="delete" parameterType="ProjectFile">
+  		delete from projectfile where PRO_ID=#{proId}
+  	</delete>
+  
+  
+  
+  
+  
+  
+  </mapper>

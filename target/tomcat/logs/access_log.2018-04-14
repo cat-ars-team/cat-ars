@@ -1,0 +1,8 @@
+0:0:0:0:0:0:0:1 - - [14/Apr/2018:23:55:31 +0800] "GET /cat_ars/ HTTP/1.1" 302 - http-bio-8080-exec-1 33
+0:0:0:0:0:0:0:1 - - [14/Apr/2018:23:55:31 +0800] "GET /cat_ars/login_info.jsp HTTP/1.1" 200 381 http-bio-8080-exec-7 25
+0:0:0:0:0:0:0:1 - - [14/Apr/2018:23:55:31 +0800] "GET /favicon.ico HTTP/1.1" 404 - http-bio-8080-exec-2 0
+0:0:0:0:0:0:0:1 - - [14/Apr/2018:23:55:31 +0800] "GET /cat_ars/login.jsp HTTP/1.1" 200 4730 http-bio-8080-exec-8 27
+0:0:0:0:0:0:0:1 - - [14/Apr/2018:23:55:40 +0800] "POST /cat_ars/login.do HTTP/1.1" 200 16784 http-bio-8080-exec-10 3192
+0:0:0:0:0:0:0:1 - - [14/Apr/2018:23:55:40 +0800] "GET /res/images/tcxt-icon.png HTTP/1.1" 404 - http-bio-8080-exec-10 0
+0:0:0:0:0:0:0:1 - - [14/Apr/2018:23:55:40 +0800] "GET /res/images/tcxt-icon.png HTTP/1.1" 404 - http-bio-8080-exec-10 0
+0:0:0:0:0:0:0:1 - - [14/Apr/2018:23:55:40 +0800] "GET /cat_ars/xtgg.do HTTP/1.1" 200 4399 http-bio-8080-exec-9 7

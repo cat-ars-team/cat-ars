@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cat.dao.IAreaRoleDAO" >
+  <resultMap id="map" type="AreaRole" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="RoleName" property="rolename" jdbcType="VARCHAR" />
+    <result column="AreaID" property="areaid" jdbcType="VARCHAR" />
+    <result column="AreaName" property="areaname" jdbcType="VARCHAR" />
+    <result column="ParentID" property="parentid" jdbcType="VARCHAR" />
+    <result column="CreateBy" property="createby" jdbcType="INTEGER" />
+    <result column="CreateTime" property="createtime" jdbcType="DATE" />
+    <result column="UpdateBy" property="updateby" jdbcType="INTEGER" />
+    <result column="UpdateTime" property="updatetime" jdbcType="DATE" />
+    <result column="DelFlag" property="delflag" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    ID, RoleName, AreaID, AreaName, ParentID, CreateBy, CreateTime, UpdateBy, UpdateTime, 
+    DelFlag
+  </sql>
+  
+  
+  <select id="provincelist" resultMap="map" parameterType="AreaRole" >
+	    select 
+	   		 <include refid="Base_Column_List" />
+	    from area_role
+	    where  (ParentID='' or ParentID is null) and RoleName= #{rolename} 
+  </select>
+  
+  <select id="citylist" resultMap="map" parameterType="AreaRole" >
+	    select 
+	   		 <include refid="Base_Column_List" />
+	    from area_role
+	    where ParentID = #{parentid} and RoleName= #{rolename}     
+  </select>
+  
+  <select id="getCityName" resultMap="map" parameterType="AreaRole" >
+	    select 
+	   		 <include refid="Base_Column_List" />
+	    from area_role
+	    where RoleName= #{rolename} and AreaID=#{areaid}  
+  </select>
+
+<select id="getprovinceName" resultMap="map" parameterType="AreaRole" >
+	    select 
+	   		 <include refid="Base_Column_List" />
+	    from area_role
+	    where   RoleName= #{rolename} and AreaID=#{areaid}
+  </select>  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </mapper>

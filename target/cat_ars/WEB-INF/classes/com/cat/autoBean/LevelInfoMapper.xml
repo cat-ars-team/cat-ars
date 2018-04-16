@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cat.autoBean.LevelInfoMapper">
+  <resultMap id="BaseResultMap" type="com.cat.autoBean.LevelInfo">
+    <result column="Id" jdbcType="INTEGER" property="id" />
+    <result column="LEVEL_ID" jdbcType="VARCHAR" property="levelId" />
+    <result column="LEVEL_NAME" jdbcType="VARCHAR" property="levelName" />
+    <result column="CUST_NUM1" jdbcType="VARCHAR" property="custNum1" />
+    <result column="CUST_NUM2" jdbcType="VARCHAR" property="custNum2" />
+    <result column="ACT_PLACE" jdbcType="VARCHAR" property="actPlace" />
+    <result column="INDUS_SEG" jdbcType="VARCHAR" property="indusSeg" />
+    <result column="PEOD_SUP" jdbcType="VARCHAR" property="peodSup" />
+    <result column="TECH_MANG" jdbcType="VARCHAR" property="techMang" />
+    <result column="DEMO_STAC" jdbcType="VARCHAR" property="demoStac" />
+    <result column="RENT_USED" jdbcType="VARCHAR" property="rentUsed" />
+    <result column="SPO_USD" jdbcType="VARCHAR" property="spoUsd" />
+    <result column="SPO_CH" jdbcType="VARCHAR" property="spoCh" />
+    <result column="INS_TIME" jdbcType="DATE" property="insTime" />
+    <result column="INS_EMP" jdbcType="VARCHAR" property="insEmp" />
+    <result column="UPD_TIME" jdbcType="DATE" property="updTime" />
+    <result column="cat_rat" jdbcType="VARCHAR" property="catRat" />
+    <result column="UPD_EMP" jdbcType="VARCHAR" property="updEmp" />
+    <result column="DEMO" jdbcType="VARCHAR" property="demo" />
+  </resultMap>
+  <insert id="insert" parameterType="com.cat.autoBean.LevelInfo">
+    insert into level_info (Id, LEVEL_ID, LEVEL_NAME, 
+      CUST_NUM1, CUST_NUM2, ACT_PLACE, 
+      INDUS_SEG, PEOD_SUP, TECH_MANG, 
+      DEMO_STAC, RENT_USED, SPO_USD, 
+      SPO_CH, INS_TIME, INS_EMP, 
+      UPD_TIME, cat_rat, UPD_EMP, 
+      DEMO)
+    values (#{id,jdbcType=INTEGER}, #{levelId,jdbcType=VARCHAR}, #{levelName,jdbcType=VARCHAR}, 
+      #{custNum1,jdbcType=VARCHAR}, #{custNum2,jdbcType=VARCHAR}, #{actPlace,jdbcType=VARCHAR}, 
+      #{indusSeg,jdbcType=VARCHAR}, #{peodSup,jdbcType=VARCHAR}, #{techMang,jdbcType=VARCHAR}, 
+      #{demoStac,jdbcType=VARCHAR}, #{rentUsed,jdbcType=VARCHAR}, #{spoUsd,jdbcType=VARCHAR}, 
+      #{spoCh,jdbcType=VARCHAR}, #{insTime,jdbcType=DATE}, #{insEmp,jdbcType=VARCHAR}, 
+      #{updTime,jdbcType=DATE}, #{catRat,jdbcType=VARCHAR}, #{updEmp,jdbcType=VARCHAR}, 
+      #{demo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cat.autoBean.LevelInfo">
+    insert into level_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="levelId != null">
+        LEVEL_ID,
+      </if>
+      <if test="levelName != null">
+        LEVEL_NAME,
+      </if>
+      <if test="custNum1 != null">
+        CUST_NUM1,
+      </if>
+      <if test="custNum2 != null">
+        CUST_NUM2,
+      </if>
+      <if test="actPlace != null">
+        ACT_PLACE,
+      </if>
+      <if test="indusSeg != null">
+        INDUS_SEG,
+      </if>
+      <if test="peodSup != null">
+        PEOD_SUP,
+      </if>
+      <if test="techMang != null">
+        TECH_MANG,
+      </if>
+      <if test="demoStac != null">
+        DEMO_STAC,
+      </if>
+      <if test="rentUsed != null">
+        RENT_USED,
+      </if>
+      <if test="spoUsd != null">
+        SPO_USD,
+      </if>
+      <if test="spoCh != null">
+        SPO_CH,
+      </if>
+      <if test="insTime != null">
+        INS_TIME,
+      </if>
+      <if test="insEmp != null">
+        INS_EMP,
+      </if>
+      <if test="updTime != null">
+        UPD_TIME,
+      </if>
+      <if test="catRat != null">
+        cat_rat,
+      </if>
+      <if test="updEmp != null">
+        UPD_EMP,
+      </if>
+      <if test="demo != null">
+        DEMO,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="levelId != null">
+        #{levelId,jdbcType=VARCHAR},
+      </if>
+      <if test="levelName != null">
+        #{levelName,jdbcType=VARCHAR},
+      </if>
+      <if test="custNum1 != null">
+        #{custNum1,jdbcType=VARCHAR},
+      </if>
+      <if test="custNum2 != null">
+        #{custNum2,jdbcType=VARCHAR},
+      </if>
+      <if test="actPlace != null">
+        #{actPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="indusSeg != null">
+        #{indusSeg,jdbcType=VARCHAR},
+      </if>
+      <if test="peodSup != null">
+        #{peodSup,jdbcType=VARCHAR},
+      </if>
+      <if test="techMang != null">
+        #{techMang,jdbcType=VARCHAR},
+      </if>
+      <if test="demoStac != null">
+        #{demoStac,jdbcType=VARCHAR},
+      </if>
+      <if test="rentUsed != null">
+        #{rentUsed,jdbcType=VARCHAR},
+      </if>
+      <if test="spoUsd != null">
+        #{spoUsd,jdbcType=VARCHAR},
+      </if>
+      <if test="spoCh != null">
+        #{spoCh,jdbcType=VARCHAR},
+      </if>
+      <if test="insTime != null">
+        #{insTime,jdbcType=DATE},
+      </if>
+      <if test="insEmp != null">
+        #{insEmp,jdbcType=VARCHAR},
+      </if>
+      <if test="updTime != null">
+        #{updTime,jdbcType=DATE},
+      </if>
+      <if test="catRat != null">
+        #{catRat,jdbcType=VARCHAR},
+      </if>
+      <if test="updEmp != null">
+        #{updEmp,jdbcType=VARCHAR},
+      </if>
+      <if test="demo != null">
+        #{demo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="map" type="LevelInfo">
+    <result column="Id" jdbcType="INTEGER" property="id" />
+    <result column="LEVEL_ID" jdbcType="VARCHAR" property="levelId" />
+    <result column="LEVEL_NAME" jdbcType="VARCHAR" property="levelName" />
+    <result column="CUST_NUM1" jdbcType="VARCHAR" property="custNum1" />
+    <result column="CUST_NUM2" jdbcType="VARCHAR" property="custNum2" />
+    <result column="ACT_PLACE" jdbcType="VARCHAR" property="actPlace" />
+    <result column="INDUS_SEG" jdbcType="VARCHAR" property="indusSeg" />
+    <result column="PEOD_SUP" jdbcType="VARCHAR" property="peodSup" />
+    <result column="TECH_MANG" jdbcType="VARCHAR" property="techMang" />
+    <result column="DEMO_STAC" jdbcType="VARCHAR" property="demoStac" />
+    <result column="RENT_USED" jdbcType="VARCHAR" property="rentUsed" />
+    <result column="SPO_USD" jdbcType="VARCHAR" property="spoUsd" />
+    <result column="SPO_CH" jdbcType="VARCHAR" property="spoCh" />
+    <result column="INS_TIME" jdbcType="DATE" property="insTime" />
+    <result column="INS_EMP" jdbcType="VARCHAR" property="insEmp" />
+    <result column="UPD_TIME" jdbcType="DATE" property="updTime" />
+    <result column="cat_rat" jdbcType="VARCHAR" property="catRat" />
+    <result column="UPD_EMP" jdbcType="VARCHAR" property="updEmp" />
+    <result column="DEMO" jdbcType="VARCHAR" property="demo" />
+  </resultMap>
+  <insert id="insert" parameterType="com.cat.autoBean.LevelInfo">
+    insert into level_info (Id, LEVEL_ID, LEVEL_NAME, 
+      CUST_NUM1, CUST_NUM2, ACT_PLACE, 
+      INDUS_SEG, PEOD_SUP, TECH_MANG, 
+      DEMO_STAC, RENT_USED, SPO_USD, 
+      SPO_CH, INS_TIME, INS_EMP, 
+      UPD_TIME, cat_rat, UPD_EMP, 
+      DEMO)
+    values (#{id,jdbcType=INTEGER}, #{levelId,jdbcType=VARCHAR}, #{levelName,jdbcType=VARCHAR}, 
+      #{custNum1,jdbcType=VARCHAR}, #{custNum2,jdbcType=VARCHAR}, #{actPlace,jdbcType=VARCHAR}, 
+      #{indusSeg,jdbcType=VARCHAR}, #{peodSup,jdbcType=VARCHAR}, #{techMang,jdbcType=VARCHAR}, 
+      #{demoStac,jdbcType=VARCHAR}, #{rentUsed,jdbcType=VARCHAR}, #{spoUsd,jdbcType=VARCHAR}, 
+      #{spoCh,jdbcType=VARCHAR}, #{insTime,jdbcType=DATE}, #{insEmp,jdbcType=VARCHAR}, 
+      #{updTime,jdbcType=DATE}, #{catRat,jdbcType=VARCHAR}, #{updEmp,jdbcType=VARCHAR}, 
+      #{demo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cat.autoBean.LevelInfo">
+    insert into level_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="levelId != null">
+        LEVEL_ID,
+      </if>
+      <if test="levelName != null">
+        LEVEL_NAME,
+      </if>
+      <if test="custNum1 != null">
+        CUST_NUM1,
+      </if>
+      <if test="custNum2 != null">
+        CUST_NUM2,
+      </if>
+      <if test="actPlace != null">
+        ACT_PLACE,
+      </if>
+      <if test="indusSeg != null">
+        INDUS_SEG,
+      </if>
+      <if test="peodSup != null">
+        PEOD_SUP,
+      </if>
+      <if test="techMang != null">
+        TECH_MANG,
+      </if>
+      <if test="demoStac != null">
+        DEMO_STAC,
+      </if>
+      <if test="rentUsed != null">
+        RENT_USED,
+      </if>
+      <if test="spoUsd != null">
+        SPO_USD,
+      </if>
+      <if test="spoCh != null">
+        SPO_CH,
+      </if>
+      <if test="insTime != null">
+        INS_TIME,
+      </if>
+      <if test="insEmp != null">
+        INS_EMP,
+      </if>
+      <if test="updTime != null">
+        UPD_TIME,
+      </if>
+      <if test="catRat != null">
+        cat_rat,
+      </if>
+      <if test="updEmp != null">
+        UPD_EMP,
+      </if>
+      <if test="demo != null">
+        DEMO,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="levelId != null">
+        #{levelId,jdbcType=VARCHAR},
+      </if>
+      <if test="levelName != null">
+        #{levelName,jdbcType=VARCHAR},
+      </if>
+      <if test="custNum1 != null">
+        #{custNum1,jdbcType=VARCHAR},
+      </if>
+      <if test="custNum2 != null">
+        #{custNum2,jdbcType=VARCHAR},
+      </if>
+      <if test="actPlace != null">
+        #{actPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="indusSeg != null">
+        #{indusSeg,jdbcType=VARCHAR},
+      </if>
+      <if test="peodSup != null">
+        #{peodSup,jdbcType=VARCHAR},
+      </if>
+      <if test="techMang != null">
+        #{techMang,jdbcType=VARCHAR},
+      </if>
+      <if test="demoStac != null">
+        #{demoStac,jdbcType=VARCHAR},
+      </if>
+      <if test="rentUsed != null">
+        #{rentUsed,jdbcType=VARCHAR},
+      </if>
+      <if test="spoUsd != null">
+        #{spoUsd,jdbcType=VARCHAR},
+      </if>
+      <if test="spoCh != null">
+        #{spoCh,jdbcType=VARCHAR},
+      </if>
+      <if test="insTime != null">
+        #{insTime,jdbcType=DATE},
+      </if>
+      <if test="insEmp != null">
+        #{insEmp,jdbcType=VARCHAR},
+      </if>
+      <if test="updTime != null">
+        #{updTime,jdbcType=DATE},
+      </if>
+      <if test="catRat != null">
+        #{catRat,jdbcType=VARCHAR},
+      </if>
+      <if test="updEmp != null">
+        #{updEmp,jdbcType=VARCHAR},
+      </if>
+      <if test="demo != null">
+        #{demo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cat.dao.IProjectSummaryDAO" >
+  <resultMap id="map" type="ProjectSummary" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="PRO_ID" property="proId" jdbcType="VARCHAR" />
+    <result column="RoleName" property="rolename" jdbcType="VARCHAR" />
+    <result column="PRO_TYPE" property="proType" jdbcType="VARCHAR" />
+    <result column="PRO_LEVEL" property="proLevel" jdbcType="VARCHAR" />
+    <result column="CUST_NUM" property="custNum" jdbcType="VARCHAR" />
+    <result column="PRO_DATE" property="proDate" jdbcType="VARCHAR" />
+    <result column="PRO_PLACE" property="proPlace" jdbcType="VARCHAR" />
+    <result column="PRO_PLACED" property="proPlaced" jdbcType="VARCHAR" />
+    <result column="PRDC_SUPP" property="prdcSupp" jdbcType="VARCHAR" />
+    <result column="MAC_MANG" property="macMang" jdbcType="VARCHAR" />
+    <result column="DEMO_MAC" property="demoMac" jdbcType="VARCHAR" />
+    <result column="RAT_USED" property="ratUsed" jdbcType="VARCHAR" />
+    <result column="CAT_FL" property="catFl" jdbcType="VARCHAR" />
+    <result column="CreateTime" property="createtime" jdbcType="DATE" />
+    <result column="CreateBy" property="createby" jdbcType="VARCHAR" />
+    <result column="UpdateTime" property="updatetime" jdbcType="DATE" />
+    <result column="UpdateBy" property="updateby" jdbcType="VARCHAR" />
+    <result column="TOTAL_CUST" property="totalCust" jdbcType="VARCHAR" />
+    <result column="APP_REIM" property="appReim" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  
+  <sql id="allColumn" >
+    ID, PRO_ID, RoleName, PRO_TYPE, PRO_LEVEL, CUST_NUM, PRO_DATE, PRO_PLACE, PRO_PLACED, 
+    PRDC_SUPP, MAC_MANG, DEMO_MAC, RAT_USED, CAT_FL
+    , CreateTime, CreateBy, UpdateTime,   UpdateBy, TOTAL_CUST, APP_REIM
+  </sql>
+  
+  
+  <!-- <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="allColumn" />
+    from projectsummary
+    where ID = #{id,jdbcType=INTEGER}
+  </select> -->
+  
+  
+  <select id="getbyproid" resultMap="map" parameterType="ProjectSummary" >
+    select 
+    	ID, PRO_ID, RoleName, PRO_TYPE, PRO_LEVEL, CUST_NUM, PRO_DATE, PRO_PLACE, PRO_PLACED,      
+		PRDC_SUPP, MAC_MANG, DEMO_MAC, RAT_USED, CAT_FL,       TOTAL_CUST, APP_REIM  
+  	from projectsummary a 
+  		left join isfproject_flow b on a.PRO_ID=b.ProID 
+  	where 
+  		b.isSubjbxx=1 and  PRO_ID = #{proId}
+    
+  </select>
+  
+  
+   <select id="gettotalbx" resultType="java.lang.Double" parameterType="ProjectSummary" >
+	   select IFNULL(SUM(APP_REIM),0) from
+	   	projectsummary 
+	   where DATE_FORMAT(PRO_DATE,'%Y')= DATE_FORMAT(#{proDate},'%Y') and RoleName=#{rolename } 
+  </select>
+  
+  
+  <!-- 获取今年已经报销的 -->
+   <select id="gettotalbxmoney" resultMap="map" parameterType="ProjectSummary" >
+    select  *
+    from projectsummary
+    where PRO_ID = #{proId}
+  </select>
+  
+  
+  
+  
+  <insert id="add" parameterType="ProjectSummary" >
+    insert into projectsummary ( PRO_ID, RoleName, 
+      PRO_TYPE, PRO_LEVEL, CUST_NUM, 
+      PRO_DATE, PRO_PLACE, PRO_PLACED, 
+      PRDC_SUPP, MAC_MANG, DEMO_MAC, 
+      RAT_USED, CAT_FL, CreateTime, 
+      CreateBy, UpdateTime, UpdateBy, 
+      TOTAL_CUST, APP_REIM)
+    values (#{proId,jdbcType=VARCHAR}, #{rolename,jdbcType=VARCHAR}, 
+      #{proType,jdbcType=VARCHAR}, #{proLevel,jdbcType=VARCHAR}, #{custNum,jdbcType=VARCHAR}, 
+      #{proDate,jdbcType=VARCHAR}, #{proPlace,jdbcType=VARCHAR}, #{proPlaced,jdbcType=VARCHAR}, 
+      #{prdcSupp,jdbcType=VARCHAR}, #{macMang,jdbcType=VARCHAR}, #{demoMac,jdbcType=VARCHAR}, 
+      #{ratUsed,jdbcType=VARCHAR}, #{catFl,jdbcType=VARCHAR}, #{createtime,jdbcType=DATE}, 
+      #{createby,jdbcType=VARCHAR}, #{updatetime,jdbcType=DATE}, #{updateby,jdbcType=VARCHAR}, 
+      #{totalCust,jdbcType=VARCHAR}, #{appReim,jdbcType=VARCHAR})
+  </insert>
+  
+   	<delete id="delete" parameterType="ProjectSummary">
+  		delete from projectsummary where PRO_ID=#{proId}
+  	</delete>
+  	
+  	
+  	
+ 
+  
+ </mapper>

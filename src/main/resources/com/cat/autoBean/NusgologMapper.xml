@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cat.autoBean.NusgologMapper" >
+  <resultMap id="BaseResultMap" type="com.cat.autoBean.Nusgolog" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="proid" property="proid" jdbcType="VARCHAR" />
+    <result column="logType" property="logtype" jdbcType="VARCHAR" />
+    <result column="logDes" property="logdes" jdbcType="VARCHAR" />
+    <result column="CreateBy" property="createby" jdbcType="VARCHAR" />
+    <result column="CreateDate" property="createdate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, proid, logType, logDes, CreateBy, CreateDate
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from nusgoLog
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from nusgoLog
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cat.autoBean.Nusgolog" >
+    insert into nusgoLog (id, proid, logType, 
+      logDes, CreateBy, CreateDate
+      )
+    values (#{id,jdbcType=INTEGER}, #{proid,jdbcType=VARCHAR}, #{logtype,jdbcType=VARCHAR}, 
+      #{logdes,jdbcType=VARCHAR}, #{createby,jdbcType=VARCHAR}, #{createdate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cat.autoBean.Nusgolog" >
+    insert into nusgoLog
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="proid != null" >
+        proid,
+      </if>
+      <if test="logtype != null" >
+        logType,
+      </if>
+      <if test="logdes != null" >
+        logDes,
+      </if>
+      <if test="createby != null" >
+        CreateBy,
+      </if>
+      <if test="createdate != null" >
+        CreateDate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="proid != null" >
+        #{proid,jdbcType=VARCHAR},
+      </if>
+      <if test="logtype != null" >
+        #{logtype,jdbcType=VARCHAR},
+      </if>
+      <if test="logdes != null" >
+        #{logdes,jdbcType=VARCHAR},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cat.autoBean.Nusgolog" >
+    update nusgoLog
+    <set >
+      <if test="proid != null" >
+        proid = #{proid,jdbcType=VARCHAR},
+      </if>
+      <if test="logtype != null" >
+        logType = #{logtype,jdbcType=VARCHAR},
+      </if>
+      <if test="logdes != null" >
+        logDes = #{logdes,jdbcType=VARCHAR},
+      </if>
+      <if test="createby != null" >
+        CreateBy = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        CreateDate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cat.autoBean.Nusgolog" >
+    update nusgoLog
+    set proid = #{proid,jdbcType=VARCHAR},
+      logType = #{logtype,jdbcType=VARCHAR},
+      logDes = #{logdes,jdbcType=VARCHAR},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      CreateDate = #{createdate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

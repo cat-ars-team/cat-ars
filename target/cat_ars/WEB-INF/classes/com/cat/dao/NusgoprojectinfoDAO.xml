@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cat.dao.INusgoprojectinfoDAO" >
+  <resultMap id="map" type="Nusgoprojectinfo" >
+    <id column="Id" property="id" jdbcType="INTEGER" />
+    <result column="ProID" property="proid" jdbcType="VARCHAR" />
+    <result column="ProType" property="protype" jdbcType="VARCHAR" />
+    <result column="RoleID" property="roleid" jdbcType="VARCHAR" />
+    <result column="EventDate" property="eventdate" jdbcType="VARCHAR" />
+    <result column="EventName" property="eventname" jdbcType="VARCHAR" />
+    <result column="PurpostOfEvent" property="purpostofevent" jdbcType="VARCHAR" />
+    <result column="Benefit" property="benefit" jdbcType="VARCHAR" />
+    <result column="PredictCost" property="predictcost" jdbcType="VARCHAR" />
+    <result column="predictbxcost" property="predictbxcost" jdbcType="VARCHAR" />
+    <result column="Percent" property="percent" jdbcType="VARCHAR" />
+    <result column="CreateDate" property="createdate" jdbcType="DATE" />
+    <result column="CreateBy" property="createby" jdbcType="VARCHAR" />
+    <result column="UpdateDate" property="updatedate" jdbcType="DATE" />
+    <result column="UpdateBy" property="updateby" jdbcType="VARCHAR" />
+    <result column="EventDesc" property="eventdesc" jdbcType="VARCHAR" />
+    <result column="CustCount" property="custcount" jdbcType="INTEGER" />
+    <result column="NUSGOCount" property="nusgocount" jdbcType="INTEGER" />
+    <result column="PlannedGiftAmount" property="plannedgiftamount" jdbcType="DOUBLE" />
+    <result column="GiftName" property="giftname" jdbcType="VARCHAR" />
+    <result column="GiftReason" property="giftreason" jdbcType="VARCHAR" />
+    <result column="NeedApprovalByLeago" property="needapprovalbyleago" jdbcType="INTEGER" />
+    <result column="ActualSpent" property="actualspent" jdbcType="DOUBLE" />
+    <result column="ActualEventDate" property="actualeventdate" jdbcType="VARCHAR" />
+    <result column="TotalExpenseAmount" property="totalexpenseamount" jdbcType="DOUBLE" />
+    <result column="EventDetails" property="eventdetails" jdbcType="VARCHAR" />
+    <result column="SalesCount" property="salescount" jdbcType="DOUBLE" />
+    <result column="NUSGOExpenseAmount" property="nusgoexpenseamount" jdbcType="DOUBLE" />
+    <result column="NusgoExpenses" property="nusgoexpenses" jdbcType="DOUBLE" />
+    <result column="NusgoNames" property="nusgonames" jdbcType="VARCHAR" />
+    <result column="ExpenseDate" property="expensedate" jdbcType="VARCHAR" />
+    <result column="Locality" property="locality" jdbcType="VARCHAR" />
+    
+    
+   <result column="EventProposal" property="eventproposal" jdbcType="INTEGER" />
+    <result column="SalesManager_First" property="salesmanagerFirst" jdbcType="INTEGER" />
+    <result column="admin_First" property="adminFirst" jdbcType="INTEGER" />
+    <result column="MarComManager_first" property="marcommanagerFirst" jdbcType="INTEGER" />
+    <result column="EmailToGCILeader_first" property="emailtogcileaderFirst" jdbcType="INTEGER" />
+    <result column="EndOfTheEvent" property="endoftheevent" jdbcType="INTEGER" />
+    <result column="SalesManager_Second" property="salesmanagerSecond" jdbcType="INTEGER" />
+    <result column="admin_Second" property="adminSecond" jdbcType="INTEGER" />
+    <result column="MarComManager_Second" property="marcommanagerSecond" jdbcType="INTEGER" />
+    <result column="GCILeader_Second" property="gcileaderSecond" jdbcType="INTEGER" />
+    
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Id, ProID, ProType, RoleID, EventDate, EventName, PurpostOfEvent, Benefit, PredictCost, 
+    CreateDate, CreateBy, UpdateDate, UpdateBy
+  </sql>
+  
+  <select id="list" resultMap="map" parameterType="Nusgoprojectinfo" >
+    SELECT 
+		a.*,
+	
+		b.EventProposal ,b.SalesManager_First ,b.admin_First ,b.MarComManager_first ,b.EmailToGCILeader_first ,b.EndOfTheEvent
+    ,b.SalesManager_Second   ,b.admin_Second  ,b.MarComManager_Second  ,b.GCILeader_Second
+	from NUSGOProjectInfo a inner JOIN nusgo_flow b on a.proid=b.proid
+	where    1=1
+    <if test="proid!=null and proid!=''">	
+			and a.ProID = #{proid}
+		</if>	
+		<if test="roleid!=null and roleid!='' and roleid!='超级管理员'">	
+			and a.RoleID = #{roleid}
+		</if>
+		order by a.CreateDate desc, a.id desc
+
+		<if test="start!=-1">
+			limit #{start},#{length}
+		</if>
+		
+  </select>
+  
+  
+  <select id="getByProid" resultMap="map" parameterType="Nusgoprojectinfo" >
+    SELECT 
+		a.ProID, a.ProType, a.RoleID, a.EventDate, a.EventName, 
+		a.PurpostOfEvent, a.Benefit, a.PredictCost, a.predictbxcost,a.percent,
+	    a.CreateDate, a.CreateBy,
+	
+		b.EventProposal ,b.SalesManager_First ,b.admin_First ,b.MarComManager_first ,b.EmailToGCILeader_first ,b.EndOfTheEvent
+    ,b.SalesManager_Second   ,b.admin_Second  ,b.MarComManager_Second  ,b.GCILeader_Second
+	from NUSGOProjectInfo a inner JOIN nusgo_flow b on a.proid=b.proid
+	where   a.ProID = #{proid} limit 1;
+		
+  </select>
+  
+  
+   <select id="listCount" resultType="java.lang.Integer" parameterType="Nusgoprojectinfo" >
+	     SELECT 
+			count(1)
+	from NUSGOProjectInfo a inner JOIN nusgo_flow b on a.proid=b.proid
+	where    1=1
+    <if test="proid!=null and proid!=''">	
+			and a.ProID = #{proid}
+		</if>	
+		<if test="roleid!=null and roleid!='' and roleid!='超级管理员'">	
+			and a.RoleID = #{roleid}
+		</if>
+
+  </select>
+  
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from NUSGOProjectInfo
+    where Id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="Nusgoprojectinfo" >
+    insert into NUSGOProjectInfo (Id, ProID, ProType, 
+      RoleID, EventDate, EventName, 
+      PurpostOfEvent, Benefit, PredictCost, 
+      CreateDate, CreateBy, UpdateDate, 
+      UpdateBy)
+    values (#{id,jdbcType=INTEGER}, #{proid,jdbcType=VARCHAR}, #{protype,jdbcType=VARCHAR}, 
+      #{roleid,jdbcType=VARCHAR}, #{eventdate,jdbcType=DATE}, #{eventname,jdbcType=VARCHAR}, 
+      #{purpostofevent,jdbcType=VARCHAR}, #{benefit,jdbcType=VARCHAR}, #{predictcost,jdbcType=VARCHAR}, 
+      #{createdate,jdbcType=DATE}, #{createby,jdbcType=VARCHAR}, #{updatedate,jdbcType=DATE}, 
+      #{updateby,jdbcType=VARCHAR})
+  </insert>
+  
+  <insert id="add" parameterType="Nusgoprojectinfo" >
+     insert into NUSGOProjectInfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+       
+      <if test="proid != null" >
+        ProID,
+      </if>
+      <if test="protype != null" >
+        ProType,
+      </if>
+      <if test="roleid != null" >
+        RoleID,
+      </if>
+      <if test="eventdate != null" >
+        EventDate,
+      </if>
+      <if test="eventname != null" >
+        EventName,
+      </if>
+      <if test="purpostofevent != null" >
+        PurpostOfEvent,
+      </if>
+      <if test="benefit != null" >
+        Benefit,
+      </if>
+      <if test="predictcost != null" >
+        PredictCost,
+      </if>
+      <if test="predictbxcost != null" >
+        predictbxcost,
+      </if>
+      <if test="percent != null" >
+        Percent,
+      </if>
+      <if test="createdate != null" >
+        CreateDate,
+      </if>
+      <if test="createby != null" >
+        CreateBy,
+      </if>
+      <if test="updatedate != null" >
+        UpdateDate,
+      </if>
+      <if test="updateby != null" >
+        UpdateBy,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="proid != null" >
+        #{proid,jdbcType=VARCHAR},
+      </if>
+      <if test="protype != null" >
+        #{protype,jdbcType=VARCHAR},
+      </if>
+      <if test="roleid != null" >
+        #{roleid,jdbcType=VARCHAR},
+      </if>
+      <if test="eventdate != null" >
+        #{eventdate,jdbcType=DATE},
+      </if>
+      <if test="eventname != null" >
+        #{eventname,jdbcType=VARCHAR},
+      </if>
+      <if test="purpostofevent != null" >
+        #{purpostofevent,jdbcType=VARCHAR},
+      </if>
+      <if test="benefit != null" >
+        #{benefit,jdbcType=VARCHAR},
+      </if>
+      <if test="predictcost != null" >
+        #{predictcost,jdbcType=VARCHAR},
+      </if>
+      <if test="predictbxcost != null" >
+        #{predictbxcost,jdbcType=VARCHAR},
+      </if>
+      <if test="percent != null" >
+        #{percent,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=DATE},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null" >
+        #{updatedate,jdbcType=DATE},
+      </if>
+      <if test="updateby != null" >
+        #{updateby,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="update" parameterType="Nusgoprojectinfo" >
+    update NUSGOProjectInfo
+    <set >
+      <if test="protype != null" >
+        ProType = #{protype,jdbcType=VARCHAR},
+      </if>
+      <if test="roleid != null" >
+        RoleID = #{roleid,jdbcType=VARCHAR},
+      </if>
+      <if test="eventdate != null" >
+        EventDate = #{eventdate,jdbcType=VARCHAR},
+      </if>
+      <if test="eventname != null" >
+        EventName = #{eventname,jdbcType=VARCHAR},
+      </if>
+      <if test="purpostofevent != null" >
+        PurpostOfEvent = #{purpostofevent,jdbcType=VARCHAR},
+      </if>
+      <if test="benefit != null" >
+        Benefit = #{benefit,jdbcType=VARCHAR},
+      </if>
+      <if test="predictcost != null" >
+        PredictCost = #{predictcost,jdbcType=VARCHAR},
+      </if>
+      <if test="predictbxcost != null" >
+        predictbxcost = #{predictbxcost,jdbcType=VARCHAR},
+      </if>
+      <if test="percent != null" >
+        Percent = #{percent,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        CreateDate = #{createdate,jdbcType=DATE},
+      </if>
+      <if test="createby != null" >
+        CreateBy = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null" >
+        UpdateDate = #{updatedate,jdbcType=DATE},
+      </if>
+      <if test="updateby != null" >
+        UpdateBy = #{updateby,jdbcType=VARCHAR},
+      </if>
+      <if test="eventdesc != null" >
+        EventDesc = #{eventdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="custcount != null" >
+        CustCount = #{custcount,jdbcType=INTEGER},
+      </if>
+      <if test="nusgocount != null" >
+        NUSGOCount = #{nusgocount,jdbcType=INTEGER},
+      </if>
+      <if test="plannedgiftamount != null" >
+        PlannedGiftAmount = #{plannedgiftamount,jdbcType=DOUBLE},
+      </if>
+      <if test="giftname != null" >
+        GiftName = #{giftname,jdbcType=VARCHAR},
+      </if>
+      <if test="giftreason != null" >
+        GiftReason = #{giftreason,jdbcType=VARCHAR},
+      </if>
+      <if test="needapprovalbyleago != null" >
+        NeedApprovalByLeago = #{needapprovalbyleago,jdbcType=INTEGER},
+      </if>
+      <if test="actualspent != null" >
+        ActualSpent = #{actualspent,jdbcType=DOUBLE},
+      </if>
+      <if test="actualeventdate != null" >
+        ActualEventDate = #{actualeventdate,jdbcType=VARCHAR},
+      </if>
+      <if test="totalexpenseamount != null" >
+        TotalExpenseAmount = #{totalexpenseamount,jdbcType=DOUBLE},
+      </if>
+      <if test="eventdetails != null" >
+        EventDetails = #{eventdetails,jdbcType=VARCHAR},
+      </if>
+      <if test="salescount != null" >
+        SalesCount = #{salescount,jdbcType=DOUBLE},
+      </if>
+      <if test="nusgoexpenseamount != null" >
+        NUSGOExpenseAmount = #{nusgoexpenseamount,jdbcType=DOUBLE},
+      </if>
+      <if test="nusgoexpenses != null" >
+        NusgoExpenses = #{nusgoexpenses,jdbcType=DOUBLE},
+      </if>
+      <if test="nusgonames != null" >
+        NusgoNames = #{nusgonames,jdbcType=VARCHAR},
+      </if>
+      <if test="expensedate != null" >
+        ExpenseDate = #{expensedate,jdbcType=VARCHAR},
+      </if>
+      <if test="locality != null" >
+        Locality = #{locality,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where  ProID = #{proid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="Nusgoprojectinfo" >
+    update NUSGOProjectInfo
+    set ProID = #{proid,jdbcType=VARCHAR},
+      ProType = #{protype,jdbcType=VARCHAR},
+      RoleID = #{roleid,jdbcType=VARCHAR},
+      EventDate = #{eventdate,jdbcType=DATE},
+      EventName = #{eventname,jdbcType=VARCHAR},
+      PurpostOfEvent = #{purpostofevent,jdbcType=VARCHAR},
+      Benefit = #{benefit,jdbcType=VARCHAR},
+      PredictCost = #{predictcost,jdbcType=VARCHAR},
+      CreateDate = #{createdate,jdbcType=DATE},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      UpdateDate = #{updatedate,jdbcType=DATE},
+      UpdateBy = #{updateby,jdbcType=VARCHAR}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cat.dao.IISFReportMachineDao" >
+  <resultMap id="map" type="ISFReportMachine" >
+    <result column="MAC_ID" property="macId" jdbcType="VARCHAR" />
+    <result column="MAC_NAME" property="macName" jdbcType="VARCHAR" />
+    <result column="MAC_MODEL" property="macModel" jdbcType="VARCHAR" />
+    <result column="MAC_NUM" property="macNum" jdbcType="DOUBLE" />
+  </resultMap>
+  
+  
+	<select id="listNewMachine" parameterType="ISFReportInfoVM"  resultMap="map">
+	
+			select * from newmachine_temp 
+	
+	</select>  
+	
+	
+	<select id="listOldMachine"   resultMap="map">
+	
+			select * from newmachine_temp
+	
+	</select> 
+  
+</mapper>

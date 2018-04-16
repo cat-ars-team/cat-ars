@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cat.autoBean.IsfprojectFlowMapper" >
+  <resultMap id="BaseResultMap" type="com.cat.autoBean.IsfprojectFlow" >
+    <result column="ProID" property="proid" jdbcType="VARCHAR" />
+    <result column="bxStatus" property="bxstatus" jdbcType="INTEGER" />
+    <result column="isSubBXZL" property="issubbxzl" jdbcType="INTEGER" />
+    <result column="isSubCustInfo" property="issubcustinfo" jdbcType="INTEGER" />
+    <result column="isSubReceipt" property="issubreceipt" jdbcType="INTEGER" />
+    <result column="SpecialStatus" property="specialstatus" jdbcType="INTEGER" />
+    <result column="isSubjbxx" property="issubjbxx" jdbcType="INTEGER" />
+    <result column="CreateBy" property="createby" jdbcType="INTEGER" />
+    <result column="CreateTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="UpdateBy" property="updateby" jdbcType="INTEGER" />
+    <result column="UpdateTime" property="updatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <insert id="insert" parameterType="com.cat.autoBean.IsfprojectFlow" >
+    insert into isfproject_flow (ProID, bxStatus, isSubBXZL, 
+      isSubCustInfo, isSubReceipt, SpecialStatus, 
+      isSubjbxx, CreateBy, CreateTime, 
+      UpdateBy, UpdateTime)
+    values (#{proid,jdbcType=VARCHAR}, #{bxstatus,jdbcType=INTEGER}, #{issubbxzl,jdbcType=INTEGER}, 
+      #{issubcustinfo,jdbcType=INTEGER}, #{issubreceipt,jdbcType=INTEGER}, #{specialstatus,jdbcType=INTEGER}, 
+      #{issubjbxx,jdbcType=INTEGER}, #{createby,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{updateby,jdbcType=INTEGER}, #{updatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cat.autoBean.IsfprojectFlow" >
+    insert into isfproject_flow
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="proid != null" >
+        ProID,
+      </if>
+      <if test="bxstatus != null" >
+        bxStatus,
+      </if>
+      <if test="issubbxzl != null" >
+        isSubBXZL,
+      </if>
+      <if test="issubcustinfo != null" >
+        isSubCustInfo,
+      </if>
+      <if test="issubreceipt != null" >
+        isSubReceipt,
+      </if>
+      <if test="specialstatus != null" >
+        SpecialStatus,
+      </if>
+      <if test="issubjbxx != null" >
+        isSubjbxx,
+      </if>
+      <if test="createby != null" >
+        CreateBy,
+      </if>
+      <if test="createtime != null" >
+        CreateTime,
+      </if>
+      <if test="updateby != null" >
+        UpdateBy,
+      </if>
+      <if test="updatetime != null" >
+        UpdateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="proid != null" >
+        #{proid,jdbcType=VARCHAR},
+      </if>
+      <if test="bxstatus != null" >
+        #{bxstatus,jdbcType=INTEGER},
+      </if>
+      <if test="issubbxzl != null" >
+        #{issubbxzl,jdbcType=INTEGER},
+      </if>
+      <if test="issubcustinfo != null" >
+        #{issubcustinfo,jdbcType=INTEGER},
+      </if>
+      <if test="issubreceipt != null" >
+        #{issubreceipt,jdbcType=INTEGER},
+      </if>
+      <if test="specialstatus != null" >
+        #{specialstatus,jdbcType=INTEGER},
+      </if>
+      <if test="issubjbxx != null" >
+        #{issubjbxx,jdbcType=INTEGER},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateby != null" >
+        #{updateby,jdbcType=INTEGER},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+</mapper>

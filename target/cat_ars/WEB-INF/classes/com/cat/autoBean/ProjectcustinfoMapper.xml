@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cat.autoBean.ProjectcustinfoMapper" >
+  <resultMap id="BaseResultMap" type="com.cat.autoBean.Projectcustinfo" >
+    <result column="Id" property="id" jdbcType="INTEGER" />
+    <result column="CustID" property="custid" jdbcType="VARCHAR" />
+    <result column="CustName" property="custname" jdbcType="VARCHAR" />
+    <result column="CustMobile" property="custmobile" jdbcType="VARCHAR" />
+    <result column="ProID" property="proid" jdbcType="VARCHAR" />
+    <result column="MAC_CONN" property="macConn" jdbcType="VARCHAR" />
+    <result column="BUY_YN" property="buyYn" jdbcType="VARCHAR" />
+    <result column="CUST_SAT" property="custSat" jdbcType="VARCHAR" />
+    <result column="AGNT_FOLUP" property="agntFolup" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="CreateTime" property="createtime" jdbcType="DATE" />
+    <result column="CreateBy" property="createby" jdbcType="VARCHAR" />
+    <result column="UpdateTime" property="updatetime" jdbcType="DATE" />
+    <result column="UpdateBy" property="updateby" jdbcType="VARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.cat.autoBean.Projectcustinfo" >
+    insert into projectcustinfo (Id, CustID, CustName, 
+      CustMobile, ProID, MAC_CONN, 
+      BUY_YN, CUST_SAT, AGNT_FOLUP, 
+      REMARK, CreateTime, CreateBy, 
+      UpdateTime, UpdateBy)
+    values (#{id,jdbcType=INTEGER}, #{custid,jdbcType=VARCHAR}, #{custname,jdbcType=VARCHAR}, 
+      #{custmobile,jdbcType=VARCHAR}, #{proid,jdbcType=VARCHAR}, #{macConn,jdbcType=VARCHAR}, 
+      #{buyYn,jdbcType=VARCHAR}, #{custSat,jdbcType=VARCHAR}, #{agntFolup,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{createtime,jdbcType=DATE}, #{createby,jdbcType=VARCHAR}, 
+      #{updatetime,jdbcType=DATE}, #{updateby,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cat.autoBean.Projectcustinfo" >
+    insert into projectcustinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="custid != null" >
+        CustID,
+      </if>
+      <if test="custname != null" >
+        CustName,
+      </if>
+      <if test="custmobile != null" >
+        CustMobile,
+      </if>
+      <if test="proid != null" >
+        ProID,
+      </if>
+      <if test="macConn != null" >
+        MAC_CONN,
+      </if>
+      <if test="buyYn != null" >
+        BUY_YN,
+      </if>
+      <if test="custSat != null" >
+        CUST_SAT,
+      </if>
+      <if test="agntFolup != null" >
+        AGNT_FOLUP,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="createtime != null" >
+        CreateTime,
+      </if>
+      <if test="createby != null" >
+        CreateBy,
+      </if>
+      <if test="updatetime != null" >
+        UpdateTime,
+      </if>
+      <if test="updateby != null" >
+        UpdateBy,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="custid != null" >
+        #{custid,jdbcType=VARCHAR},
+      </if>
+      <if test="custname != null" >
+        #{custname,jdbcType=VARCHAR},
+      </if>
+      <if test="custmobile != null" >
+        #{custmobile,jdbcType=VARCHAR},
+      </if>
+      <if test="proid != null" >
+        #{proid,jdbcType=VARCHAR},
+      </if>
+      <if test="macConn != null" >
+        #{macConn,jdbcType=VARCHAR},
+      </if>
+      <if test="buyYn != null" >
+        #{buyYn,jdbcType=VARCHAR},
+      </if>
+      <if test="custSat != null" >
+        #{custSat,jdbcType=VARCHAR},
+      </if>
+      <if test="agntFolup != null" >
+        #{agntFolup,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=DATE},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=DATE},
+      </if>
+      <if test="updateby != null" >
+        #{updateby,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

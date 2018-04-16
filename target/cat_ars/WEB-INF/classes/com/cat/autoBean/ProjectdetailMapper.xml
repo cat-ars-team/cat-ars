@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cat.autoBean.ProjectdetailMapper" >
+  <resultMap id="BaseResultMap" type="com.cat.autoBean.Projectdetail" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="PRO_ID" property="proId" jdbcType="VARCHAR" />
+    <result column="RoleName" property="rolename" jdbcType="VARCHAR" />
+    <result column="INDUS_NUM" property="indusNum" jdbcType="VARCHAR" />
+    <result column="PARTS_SHOW" property="partsShow" jdbcType="VARCHAR" />
+    <result column="PARTS_PROMO" property="partsPromo" jdbcType="VARCHAR" />
+    <result column="PARTS_WH" property="partsWh" jdbcType="VARCHAR" />
+    <result column="SERVICE_WS" property="serviceWs" jdbcType="VARCHAR" />
+    <result column="TOOLS_POLLU" property="toolsPollu" jdbcType="VARCHAR" />
+    <result column="SPE_SERVICES" property="speServices" jdbcType="VARCHAR" />
+    <result column="PROMOTION" property="promotion" jdbcType="VARCHAR" />
+    <result column="GPS_SHOW" property="gpsShow" jdbcType="VARCHAR" />
+    <result column="INTRO_DEMO" property="introDemo" jdbcType="VARCHAR" />
+    <result column="DYNA_DEMO" property="dynaDemo" jdbcType="VARCHAR" />
+    <result column="STATIC_DEMO" property="staticDemo" jdbcType="VARCHAR" />
+    <result column="SHOWCASE_CAT" property="showcaseCat" jdbcType="VARCHAR" />
+    <result column="SHOWCASE_RU" property="showcaseRu" jdbcType="VARCHAR" />
+    <result column="CreateTime" property="createtime" jdbcType="DATE" />
+    <result column="CreateBy" property="createby" jdbcType="INTEGER" />
+    <result column="UpdateTime" property="updatetime" jdbcType="DATE" />
+    <result column="UpdateBy" property="updateby" jdbcType="INTEGER" />
+    <result column="TITLE" property="title" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, PRO_ID, RoleName, INDUS_NUM, PARTS_SHOW, PARTS_PROMO, PARTS_WH, SERVICE_WS, TOOLS_POLLU, 
+    SPE_SERVICES, PROMOTION, GPS_SHOW, INTRO_DEMO, DYNA_DEMO, STATIC_DEMO, SHOWCASE_CAT, 
+    SHOWCASE_RU, CreateTime, CreateBy, UpdateTime, UpdateBy, TITLE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from projectdetail
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from projectdetail
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cat.autoBean.Projectdetail" >
+    insert into projectdetail (ID, PRO_ID, RoleName, 
+      INDUS_NUM, PARTS_SHOW, PARTS_PROMO, 
+      PARTS_WH, SERVICE_WS, TOOLS_POLLU, 
+      SPE_SERVICES, PROMOTION, GPS_SHOW, 
+      INTRO_DEMO, DYNA_DEMO, STATIC_DEMO, 
+      SHOWCASE_CAT, SHOWCASE_RU, CreateTime, 
+      CreateBy, UpdateTime, UpdateBy, 
+      TITLE)
+    values (#{id,jdbcType=INTEGER}, #{proId,jdbcType=VARCHAR}, #{rolename,jdbcType=VARCHAR}, 
+      #{indusNum,jdbcType=VARCHAR}, #{partsShow,jdbcType=VARCHAR}, #{partsPromo,jdbcType=VARCHAR}, 
+      #{partsWh,jdbcType=VARCHAR}, #{serviceWs,jdbcType=VARCHAR}, #{toolsPollu,jdbcType=VARCHAR}, 
+      #{speServices,jdbcType=VARCHAR}, #{promotion,jdbcType=VARCHAR}, #{gpsShow,jdbcType=VARCHAR}, 
+      #{introDemo,jdbcType=VARCHAR}, #{dynaDemo,jdbcType=VARCHAR}, #{staticDemo,jdbcType=VARCHAR}, 
+      #{showcaseCat,jdbcType=VARCHAR}, #{showcaseRu,jdbcType=VARCHAR}, #{createtime,jdbcType=DATE}, 
+      #{createby,jdbcType=INTEGER}, #{updatetime,jdbcType=DATE}, #{updateby,jdbcType=INTEGER}, 
+      #{title,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cat.autoBean.Projectdetail" >
+    insert into projectdetail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="proId != null" >
+        PRO_ID,
+      </if>
+      <if test="rolename != null" >
+        RoleName,
+      </if>
+      <if test="indusNum != null" >
+        INDUS_NUM,
+      </if>
+      <if test="partsShow != null" >
+        PARTS_SHOW,
+      </if>
+      <if test="partsPromo != null" >
+        PARTS_PROMO,
+      </if>
+      <if test="partsWh != null" >
+        PARTS_WH,
+      </if>
+      <if test="serviceWs != null" >
+        SERVICE_WS,
+      </if>
+      <if test="toolsPollu != null" >
+        TOOLS_POLLU,
+      </if>
+      <if test="speServices != null" >
+        SPE_SERVICES,
+      </if>
+      <if test="promotion != null" >
+        PROMOTION,
+      </if>
+      <if test="gpsShow != null" >
+        GPS_SHOW,
+      </if>
+      <if test="introDemo != null" >
+        INTRO_DEMO,
+      </if>
+      <if test="dynaDemo != null" >
+        DYNA_DEMO,
+      </if>
+      <if test="staticDemo != null" >
+        STATIC_DEMO,
+      </if>
+      <if test="showcaseCat != null" >
+        SHOWCASE_CAT,
+      </if>
+      <if test="showcaseRu != null" >
+        SHOWCASE_RU,
+      </if>
+      <if test="createtime != null" >
+        CreateTime,
+      </if>
+      <if test="createby != null" >
+        CreateBy,
+      </if>
+      <if test="updatetime != null" >
+        UpdateTime,
+      </if>
+      <if test="updateby != null" >
+        UpdateBy,
+      </if>
+      <if test="title != null" >
+        TITLE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="proId != null" >
+        #{proId,jdbcType=VARCHAR},
+      </if>
+      <if test="rolename != null" >
+        #{rolename,jdbcType=VARCHAR},
+      </if>
+      <if test="indusNum != null" >
+        #{indusNum,jdbcType=VARCHAR},
+      </if>
+      <if test="partsShow != null" >
+        #{partsShow,jdbcType=VARCHAR},
+      </if>
+      <if test="partsPromo != null" >
+        #{partsPromo,jdbcType=VARCHAR},
+      </if>
+      <if test="partsWh != null" >
+        #{partsWh,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceWs != null" >
+        #{serviceWs,jdbcType=VARCHAR},
+      </if>
+      <if test="toolsPollu != null" >
+        #{toolsPollu,jdbcType=VARCHAR},
+      </if>
+      <if test="speServices != null" >
+        #{speServices,jdbcType=VARCHAR},
+      </if>
+      <if test="promotion != null" >
+        #{promotion,jdbcType=VARCHAR},
+      </if>
+      <if test="gpsShow != null" >
+        #{gpsShow,jdbcType=VARCHAR},
+      </if>
+      <if test="introDemo != null" >
+        #{introDemo,jdbcType=VARCHAR},
+      </if>
+      <if test="dynaDemo != null" >
+        #{dynaDemo,jdbcType=VARCHAR},
+      </if>
+      <if test="staticDemo != null" >
+        #{staticDemo,jdbcType=VARCHAR},
+      </if>
+      <if test="showcaseCat != null" >
+        #{showcaseCat,jdbcType=VARCHAR},
+      </if>
+      <if test="showcaseRu != null" >
+        #{showcaseRu,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=DATE},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=INTEGER},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=DATE},
+      </if>
+      <if test="updateby != null" >
+        #{updateby,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cat.autoBean.Projectdetail" >
+    update projectdetail
+    <set >
+      <if test="proId != null" >
+        PRO_ID = #{proId,jdbcType=VARCHAR},
+      </if>
+      <if test="rolename != null" >
+        RoleName = #{rolename,jdbcType=VARCHAR},
+      </if>
+      <if test="indusNum != null" >
+        INDUS_NUM = #{indusNum,jdbcType=VARCHAR},
+      </if>
+      <if test="partsShow != null" >
+        PARTS_SHOW = #{partsShow,jdbcType=VARCHAR},
+      </if>
+      <if test="partsPromo != null" >
+        PARTS_PROMO = #{partsPromo,jdbcType=VARCHAR},
+      </if>
+      <if test="partsWh != null" >
+        PARTS_WH = #{partsWh,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceWs != null" >
+        SERVICE_WS = #{serviceWs,jdbcType=VARCHAR},
+      </if>
+      <if test="toolsPollu != null" >
+        TOOLS_POLLU = #{toolsPollu,jdbcType=VARCHAR},
+      </if>
+      <if test="speServices != null" >
+        SPE_SERVICES = #{speServices,jdbcType=VARCHAR},
+      </if>
+      <if test="promotion != null" >
+        PROMOTION = #{promotion,jdbcType=VARCHAR},
+      </if>
+      <if test="gpsShow != null" >
+        GPS_SHOW = #{gpsShow,jdbcType=VARCHAR},
+      </if>
+      <if test="introDemo != null" >
+        INTRO_DEMO = #{introDemo,jdbcType=VARCHAR},
+      </if>
+      <if test="dynaDemo != null" >
+        DYNA_DEMO = #{dynaDemo,jdbcType=VARCHAR},
+      </if>
+      <if test="staticDemo != null" >
+        STATIC_DEMO = #{staticDemo,jdbcType=VARCHAR},
+      </if>
+      <if test="showcaseCat != null" >
+        SHOWCASE_CAT = #{showcaseCat,jdbcType=VARCHAR},
+      </if>
+      <if test="showcaseRu != null" >
+        SHOWCASE_RU = #{showcaseRu,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        CreateTime = #{createtime,jdbcType=DATE},
+      </if>
+      <if test="createby != null" >
+        CreateBy = #{createby,jdbcType=INTEGER},
+      </if>
+      <if test="updatetime != null" >
+        UpdateTime = #{updatetime,jdbcType=DATE},
+      </if>
+      <if test="updateby != null" >
+        UpdateBy = #{updateby,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        TITLE = #{title,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cat.autoBean.Projectdetail" >
+    update projectdetail
+    set PRO_ID = #{proId,jdbcType=VARCHAR},
+      RoleName = #{rolename,jdbcType=VARCHAR},
+      INDUS_NUM = #{indusNum,jdbcType=VARCHAR},
+      PARTS_SHOW = #{partsShow,jdbcType=VARCHAR},
+      PARTS_PROMO = #{partsPromo,jdbcType=VARCHAR},
+      PARTS_WH = #{partsWh,jdbcType=VARCHAR},
+      SERVICE_WS = #{serviceWs,jdbcType=VARCHAR},
+      TOOLS_POLLU = #{toolsPollu,jdbcType=VARCHAR},
+      SPE_SERVICES = #{speServices,jdbcType=VARCHAR},
+      PROMOTION = #{promotion,jdbcType=VARCHAR},
+      GPS_SHOW = #{gpsShow,jdbcType=VARCHAR},
+      INTRO_DEMO = #{introDemo,jdbcType=VARCHAR},
+      DYNA_DEMO = #{dynaDemo,jdbcType=VARCHAR},
+      STATIC_DEMO = #{staticDemo,jdbcType=VARCHAR},
+      SHOWCASE_CAT = #{showcaseCat,jdbcType=VARCHAR},
+      SHOWCASE_RU = #{showcaseRu,jdbcType=VARCHAR},
+      CreateTime = #{createtime,jdbcType=DATE},
+      CreateBy = #{createby,jdbcType=INTEGER},
+      UpdateTime = #{updatetime,jdbcType=DATE},
+      UpdateBy = #{updateby,jdbcType=INTEGER},
+      TITLE = #{title,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

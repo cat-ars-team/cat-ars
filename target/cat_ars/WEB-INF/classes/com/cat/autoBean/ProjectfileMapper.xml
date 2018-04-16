@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cat.autoBean.ProjectfileMapper" >
+  <resultMap id="BaseResultMap" type="com.cat.autoBean.Projectfile" >
+    <id column="Id" property="id" jdbcType="INTEGER" />
+    <result column="FIELD_NAME" property="fieldName" jdbcType="VARCHAR" />
+    <result column="FIELD_ID" property="fieldId" jdbcType="VARCHAR" />
+    <result column="FIELD_TYPE" property="fieldType" jdbcType="VARCHAR" />
+    <result column="FIELD_ARC" property="fieldArc" jdbcType="VARCHAR" />
+    <result column="UPLOAD_TIME" property="uploadTime" jdbcType="DATE" />
+    <result column="DOWN_TIME" property="downTime" jdbcType="DATE" />
+    <result column="CreateTime" property="createtime" jdbcType="DATE" />
+    <result column="CreateBy" property="createby" jdbcType="INTEGER" />
+    <result column="UpdateTime" property="updatetime" jdbcType="DATE" />
+    <result column="UpdateBy" property="updateby" jdbcType="INTEGER" />
+    <result column="PRO_ID" property="proId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Id, FIELD_NAME, FIELD_ID, FIELD_TYPE, FIELD_ARC, UPLOAD_TIME, DOWN_TIME, CreateTime, 
+    CreateBy, UpdateTime, UpdateBy, PRO_ID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from projectfile
+    where Id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from projectfile
+    where Id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cat.autoBean.Projectfile" >
+    insert into projectfile (Id, FIELD_NAME, FIELD_ID, 
+      FIELD_TYPE, FIELD_ARC, UPLOAD_TIME, 
+      DOWN_TIME, CreateTime, CreateBy, 
+      UpdateTime, UpdateBy, PRO_ID
+      )
+    values (#{id,jdbcType=INTEGER}, #{fieldName,jdbcType=VARCHAR}, #{fieldId,jdbcType=VARCHAR}, 
+      #{fieldType,jdbcType=VARCHAR}, #{fieldArc,jdbcType=VARCHAR}, #{uploadTime,jdbcType=DATE}, 
+      #{downTime,jdbcType=DATE}, #{createtime,jdbcType=DATE}, #{createby,jdbcType=INTEGER}, 
+      #{updatetime,jdbcType=DATE}, #{updateby,jdbcType=INTEGER}, #{proId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cat.autoBean.Projectfile" >
+    insert into projectfile
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="fieldName != null" >
+        FIELD_NAME,
+      </if>
+      <if test="fieldId != null" >
+        FIELD_ID,
+      </if>
+      <if test="fieldType != null" >
+        FIELD_TYPE,
+      </if>
+      <if test="fieldArc != null" >
+        FIELD_ARC,
+      </if>
+      <if test="uploadTime != null" >
+        UPLOAD_TIME,
+      </if>
+      <if test="downTime != null" >
+        DOWN_TIME,
+      </if>
+      <if test="createtime != null" >
+        CreateTime,
+      </if>
+      <if test="createby != null" >
+        CreateBy,
+      </if>
+      <if test="updatetime != null" >
+        UpdateTime,
+      </if>
+      <if test="updateby != null" >
+        UpdateBy,
+      </if>
+      <if test="proId != null" >
+        PRO_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="fieldName != null" >
+        #{fieldName,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldId != null" >
+        #{fieldId,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldType != null" >
+        #{fieldType,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldArc != null" >
+        #{fieldArc,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadTime != null" >
+        #{uploadTime,jdbcType=DATE},
+      </if>
+      <if test="downTime != null" >
+        #{downTime,jdbcType=DATE},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=DATE},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=INTEGER},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=DATE},
+      </if>
+      <if test="updateby != null" >
+        #{updateby,jdbcType=INTEGER},
+      </if>
+      <if test="proId != null" >
+        #{proId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cat.autoBean.Projectfile" >
+    update projectfile
+    <set >
+      <if test="fieldName != null" >
+        FIELD_NAME = #{fieldName,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldId != null" >
+        FIELD_ID = #{fieldId,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldType != null" >
+        FIELD_TYPE = #{fieldType,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldArc != null" >
+        FIELD_ARC = #{fieldArc,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadTime != null" >
+        UPLOAD_TIME = #{uploadTime,jdbcType=DATE},
+      </if>
+      <if test="downTime != null" >
+        DOWN_TIME = #{downTime,jdbcType=DATE},
+      </if>
+      <if test="createtime != null" >
+        CreateTime = #{createtime,jdbcType=DATE},
+      </if>
+      <if test="createby != null" >
+        CreateBy = #{createby,jdbcType=INTEGER},
+      </if>
+      <if test="updatetime != null" >
+        UpdateTime = #{updatetime,jdbcType=DATE},
+      </if>
+      <if test="updateby != null" >
+        UpdateBy = #{updateby,jdbcType=INTEGER},
+      </if>
+      <if test="proId != null" >
+        PRO_ID = #{proId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cat.autoBean.Projectfile" >
+    update projectfile
+    set FIELD_NAME = #{fieldName,jdbcType=VARCHAR},
+      FIELD_ID = #{fieldId,jdbcType=VARCHAR},
+      FIELD_TYPE = #{fieldType,jdbcType=VARCHAR},
+      FIELD_ARC = #{fieldArc,jdbcType=VARCHAR},
+      UPLOAD_TIME = #{uploadTime,jdbcType=DATE},
+      DOWN_TIME = #{downTime,jdbcType=DATE},
+      CreateTime = #{createtime,jdbcType=DATE},
+      CreateBy = #{createby,jdbcType=INTEGER},
+      UpdateTime = #{updatetime,jdbcType=DATE},
+      UpdateBy = #{updateby,jdbcType=INTEGER},
+      PRO_ID = #{proId,jdbcType=VARCHAR}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

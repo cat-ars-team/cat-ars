@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cat.dao.INusgoFlowDAO" >
+  <resultMap id="map" type="NusgoFlow" >
+     <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="proid" property="proid" jdbcType="VARCHAR" />
+    <result column="EventProposal" property="eventproposal" jdbcType="INTEGER" />
+    <result column="SalesManager_First" property="salesmanagerFirst" jdbcType="INTEGER" />
+    <result column="admin_First" property="adminFirst" jdbcType="INTEGER" />
+    <result column="MarComManager_first" property="marcommanagerFirst" jdbcType="INTEGER" />
+    <result column="EmailToGCILeader_first" property="emailtogcileaderFirst" jdbcType="INTEGER" />
+    <result column="EndOfTheEvent" property="endoftheevent" jdbcType="INTEGER" />
+    <result column="SalesManager_Second" property="salesmanagerSecond" jdbcType="INTEGER" />
+    <result column="admin_Second" property="adminSecond" jdbcType="INTEGER" />
+    <result column="MarComManager_Second" property="marcommanagerSecond" jdbcType="INTEGER" />
+    <result column="GCILeader_Second" property="gcileaderSecond" jdbcType="INTEGER" />
+    <result column="CreateBy" property="createby" jdbcType="VARCHAR" />
+    <result column="CreateDate" property="createdate" jdbcType="TIMESTAMP" />
+    <result column="UpdateBy" property="updateby" jdbcType="VARCHAR" />
+    <result column="UpdateDate" property="updatedate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    id, proid, EventProposal, SalesManager_First, admin_First, MarComManager_first, EmailToGCILeader_first, 
+    EndOfTheEvent, SalesManager_Second, admin_Second, MarComManager_Second, GCILeader_Second, 
+    CreateBy, CreateDate, UpdateBy, UpdateDate
+  </sql>
+  
+  <select id="getbyproid" resultMap="map" parameterType="NusgoFlow" >
+    select *
+    from nusgo_flow
+    where proid = #{proid }
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from nusgo_flow
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  
+  <insert id="add" parameterType="NusgoFlow" >
+   insert into nusgo_flow (proid, EventProposal, 
+      SalesManager_First, admin_First, MarComManager_first, 
+      EmailToGCILeader_first, EndOfTheEvent, SalesManager_Second, 
+      admin_Second, MarComManager_Second, GCILeader_Second, 
+      CreateBy, CreateDate, UpdateBy, 
+      UpdateDate)
+    values ( #{proid,jdbcType=VARCHAR}, #{eventproposal,jdbcType=INTEGER}, 
+      #{salesmanagerFirst,jdbcType=INTEGER}, #{adminFirst,jdbcType=INTEGER}, #{marcommanagerFirst,jdbcType=INTEGER}, 
+      #{emailtogcileaderFirst,jdbcType=INTEGER}, #{endoftheevent,jdbcType=INTEGER}, #{salesmanagerSecond,jdbcType=INTEGER}, 
+      #{adminSecond,jdbcType=INTEGER}, #{marcommanagerSecond,jdbcType=INTEGER}, #{gcileaderSecond,jdbcType=INTEGER}, 
+      #{createby,jdbcType=VARCHAR}, #{createdate,jdbcType=TIMESTAMP}, #{updateby,jdbcType=VARCHAR}, 
+      #{updatedate,jdbcType=TIMESTAMP})
+  </insert>
+  
+  
+  <select id="getlistbyproid" parameterType="string"  resultMap="map" >
+  	select * from nusgo_flow  where proID=#{proid} limit 1
+  </select>
+  
+  <update id="updatebyproid" parameterType="NusgoFlow" >
+    update nusgo_flow
+    <set >
+      
+      <if test="eventproposal != null" >
+        EventProposal = #{eventproposal,jdbcType=INTEGER},
+      </if>
+      <if test="salesmanagerFirst != null" >
+        SalesManager_First = #{salesmanagerFirst,jdbcType=INTEGER},
+      </if>
+      <if test="adminFirst != null" >
+        admin_First = #{adminFirst,jdbcType=INTEGER},
+      </if>
+      <if test="marcommanagerFirst != null" >
+        MarComManager_first = #{marcommanagerFirst,jdbcType=INTEGER},
+      </if>
+      <if test="emailtogcileaderFirst != null" >
+        EmailToGCILeader_first = #{emailtogcileaderFirst,jdbcType=INTEGER},
+      </if>
+      <if test="endoftheevent != null" >
+        EndOfTheEvent = #{endoftheevent,jdbcType=INTEGER},
+      </if>
+      <if test="salesmanagerSecond != null" >
+        SalesManager_Second = #{salesmanagerSecond,jdbcType=INTEGER},
+      </if>
+      <if test="adminSecond != null" >
+        admin_Second = #{adminSecond,jdbcType=INTEGER},
+      </if>
+      <if test="marcommanagerSecond != null" >
+        MarComManager_Second = #{marcommanagerSecond,jdbcType=INTEGER},
+      </if>
+      <if test="gcileaderSecond != null" >
+        GCILeader_Second = #{gcileaderSecond,jdbcType=INTEGER},
+      </if>
+      <if test="createby != null" >
+        CreateBy = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        CreateDate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateby != null" >
+        UpdateBy = #{updateby,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null" >
+        UpdateDate = #{updatedate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where   proid = #{proid,jdbcType=VARCHAR}
+  </update>
+  
+</mapper>

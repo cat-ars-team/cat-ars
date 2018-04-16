@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="com.cat.dao.IProcDAO"> 
+     
+    <select id ="getproid" parameterType= "map" statementType="CALLABLE" >  
+        <!--注明statementType="CALLABLE"表示调用存储过程-->  
+       <!--  
+         ProTypeStr   RoleNameStr  ProID
+			CALL SP_GetProIDByType('ISF','WTC', @ProID ); -->
+        
+        
+        
+         {call SP_GetProIDByType(  
+        #{ProTypeStr, jdbcType=VARCHAR, mode=IN},  
+        #{RoleNameStr, jdbcType= VARCHAR, mode=IN},  
+        #{ProID, mode=OUT, jdbcType= VARCHAR}  
+        )}  
+        
+        
+       <!--  {call UPDATE_USER(  
+        #{in_id, jdbcType=INTEGER, mode=IN},  
+        #{in_user_name, jdbcType= VARCHAR, mode=IN},  
+        #{out_user_phone, mode=OUT, jdbcType= VARCHAR}  
+        )}   -->
+        <!--传入传出参数要注明mode=IN/OUT 并要注明jdbcType（在网上可以查询mybatis支持哪些jdbcType类型），返回参数要注明对应的resultMap-->  
+    </select >  
+  
+</mapper>  

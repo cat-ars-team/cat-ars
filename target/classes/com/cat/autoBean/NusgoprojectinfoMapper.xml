@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cat.autoBean.NusgoprojectinfoMapper" >
+  <resultMap id="BaseResultMap" type="com.cat.autoBean.Nusgoprojectinfo" >
+    <id column="Id" property="id" jdbcType="INTEGER" />
+    <result column="ProID" property="proid" jdbcType="VARCHAR" />
+    <result column="ProType" property="protype" jdbcType="VARCHAR" />
+    <result column="RoleID" property="roleid" jdbcType="VARCHAR" />
+    <result column="EventDate" property="eventdate" jdbcType="VARCHAR" />
+    <result column="EventName" property="eventname" jdbcType="VARCHAR" />
+    <result column="PurpostOfEvent" property="purpostofevent" jdbcType="VARCHAR" />
+    <result column="Benefit" property="benefit" jdbcType="VARCHAR" />
+    <result column="PredictCost" property="predictcost" jdbcType="VARCHAR" />
+    <result column="predictbxcost" property="predictbxcost" jdbcType="VARCHAR" />
+    <result column="Percent" property="percent" jdbcType="VARCHAR" />
+    <result column="CreateDate" property="createdate" jdbcType="DATE" />
+    <result column="CreateBy" property="createby" jdbcType="VARCHAR" />
+    <result column="UpdateDate" property="updatedate" jdbcType="DATE" />
+    <result column="UpdateBy" property="updateby" jdbcType="VARCHAR" />
+    <result column="EventDesc" property="eventdesc" jdbcType="VARCHAR" />
+    <result column="CustCount" property="custcount" jdbcType="INTEGER" />
+    <result column="NUSGOCount" property="nusgocount" jdbcType="INTEGER" />
+    <result column="PlannedGiftAmount" property="plannedgiftamount" jdbcType="DOUBLE" />
+    <result column="GiftName" property="giftname" jdbcType="VARCHAR" />
+    <result column="GiftReason" property="giftreason" jdbcType="VARCHAR" />
+    <result column="NeedApprovalByLeago" property="needapprovalbyleago" jdbcType="INTEGER" />
+    <result column="ActualSpent" property="actualspent" jdbcType="DOUBLE" />
+    <result column="ActualEventDate" property="actualeventdate" jdbcType="VARCHAR" />
+    <result column="TotalExpenseAmount" property="totalexpenseamount" jdbcType="DOUBLE" />
+    <result column="EventDetails" property="eventdetails" jdbcType="VARCHAR" />
+    <result column="SalesCount" property="salescount" jdbcType="DOUBLE" />
+    <result column="NUSGOExpenseAmount" property="nusgoexpenseamount" jdbcType="DOUBLE" />
+    <result column="NusgoExpenses" property="nusgoexpenses" jdbcType="DOUBLE" />
+    <result column="NusgoNames" property="nusgonames" jdbcType="VARCHAR" />
+    <result column="ExpenseDate" property="expensedate" jdbcType="VARCHAR" />
+    <result column="Locality" property="locality" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Id, ProID, ProType, RoleID, EventDate, EventName, PurpostOfEvent, Benefit, PredictCost, 
+    predictbxcost, Percent, CreateDate, CreateBy, UpdateDate, UpdateBy, EventDesc, CustCount, 
+    NUSGOCount, PlannedGiftAmount, GiftName, GiftReason, NeedApprovalByLeago, ActualSpent, 
+    ActualEventDate, TotalExpenseAmount, EventDetails, SalesCount, NUSGOExpenseAmount, 
+    NusgoExpenses, NusgoNames, ExpenseDate, Locality
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from NUSGOProjectInfo
+    where Id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from NUSGOProjectInfo
+    where Id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cat.autoBean.Nusgoprojectinfo" >
+    insert into NUSGOProjectInfo (Id, ProID, ProType, 
+      RoleID, EventDate, EventName, 
+      PurpostOfEvent, Benefit, PredictCost, 
+      predictbxcost, Percent, CreateDate, 
+      CreateBy, UpdateDate, UpdateBy, 
+      EventDesc, CustCount, NUSGOCount, 
+      PlannedGiftAmount, GiftName, GiftReason, 
+      NeedApprovalByLeago, ActualSpent, ActualEventDate, 
+      TotalExpenseAmount, EventDetails, SalesCount, 
+      NUSGOExpenseAmount, NusgoExpenses, NusgoNames, 
+      ExpenseDate, Locality)
+    values (#{id,jdbcType=INTEGER}, #{proid,jdbcType=VARCHAR}, #{protype,jdbcType=VARCHAR}, 
+      #{roleid,jdbcType=VARCHAR}, #{eventdate,jdbcType=VARCHAR}, #{eventname,jdbcType=VARCHAR}, 
+      #{purpostofevent,jdbcType=VARCHAR}, #{benefit,jdbcType=VARCHAR}, #{predictcost,jdbcType=VARCHAR}, 
+      #{predictbxcost,jdbcType=VARCHAR}, #{percent,jdbcType=VARCHAR}, #{createdate,jdbcType=DATE}, 
+      #{createby,jdbcType=VARCHAR}, #{updatedate,jdbcType=DATE}, #{updateby,jdbcType=VARCHAR}, 
+      #{eventdesc,jdbcType=VARCHAR}, #{custcount,jdbcType=INTEGER}, #{nusgocount,jdbcType=INTEGER}, 
+      #{plannedgiftamount,jdbcType=DOUBLE}, #{giftname,jdbcType=VARCHAR}, #{giftreason,jdbcType=VARCHAR}, 
+      #{needapprovalbyleago,jdbcType=INTEGER}, #{actualspent,jdbcType=DOUBLE}, #{actualeventdate,jdbcType=VARCHAR}, 
+      #{totalexpenseamount,jdbcType=DOUBLE}, #{eventdetails,jdbcType=VARCHAR}, #{salescount,jdbcType=DOUBLE}, 
+      #{nusgoexpenseamount,jdbcType=DOUBLE}, #{nusgoexpenses,jdbcType=DOUBLE}, #{nusgonames,jdbcType=VARCHAR}, 
+      #{expensedate,jdbcType=VARCHAR}, #{locality,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cat.autoBean.Nusgoprojectinfo" >
+    insert into NUSGOProjectInfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="proid != null" >
+        ProID,
+      </if>
+      <if test="protype != null" >
+        ProType,
+      </if>
+      <if test="roleid != null" >
+        RoleID,
+      </if>
+      <if test="eventdate != null" >
+        EventDate,
+      </if>
+      <if test="eventname != null" >
+        EventName,
+      </if>
+      <if test="purpostofevent != null" >
+        PurpostOfEvent,
+      </if>
+      <if test="benefit != null" >
+        Benefit,
+      </if>
+      <if test="predictcost != null" >
+        PredictCost,
+      </if>
+      <if test="predictbxcost != null" >
+        predictbxcost,
+      </if>
+      <if test="percent != null" >
+        Percent,
+      </if>
+      <if test="createdate != null" >
+        CreateDate,
+      </if>
+      <if test="createby != null" >
+        CreateBy,
+      </if>
+      <if test="updatedate != null" >
+        UpdateDate,
+      </if>
+      <if test="updateby != null" >
+        UpdateBy,
+      </if>
+      <if test="eventdesc != null" >
+        EventDesc,
+      </if>
+      <if test="custcount != null" >
+        CustCount,
+      </if>
+      <if test="nusgocount != null" >
+        NUSGOCount,
+      </if>
+      <if test="plannedgiftamount != null" >
+        PlannedGiftAmount,
+      </if>
+      <if test="giftname != null" >
+        GiftName,
+      </if>
+      <if test="giftreason != null" >
+        GiftReason,
+      </if>
+      <if test="needapprovalbyleago != null" >
+        NeedApprovalByLeago,
+      </if>
+      <if test="actualspent != null" >
+        ActualSpent,
+      </if>
+      <if test="actualeventdate != null" >
+        ActualEventDate,
+      </if>
+      <if test="totalexpenseamount != null" >
+        TotalExpenseAmount,
+      </if>
+      <if test="eventdetails != null" >
+        EventDetails,
+      </if>
+      <if test="salescount != null" >
+        SalesCount,
+      </if>
+      <if test="nusgoexpenseamount != null" >
+        NUSGOExpenseAmount,
+      </if>
+      <if test="nusgoexpenses != null" >
+        NusgoExpenses,
+      </if>
+      <if test="nusgonames != null" >
+        NusgoNames,
+      </if>
+      <if test="expensedate != null" >
+        ExpenseDate,
+      </if>
+      <if test="locality != null" >
+        Locality,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="proid != null" >
+        #{proid,jdbcType=VARCHAR},
+      </if>
+      <if test="protype != null" >
+        #{protype,jdbcType=VARCHAR},
+      </if>
+      <if test="roleid != null" >
+        #{roleid,jdbcType=VARCHAR},
+      </if>
+      <if test="eventdate != null" >
+        #{eventdate,jdbcType=VARCHAR},
+      </if>
+      <if test="eventname != null" >
+        #{eventname,jdbcType=VARCHAR},
+      </if>
+      <if test="purpostofevent != null" >
+        #{purpostofevent,jdbcType=VARCHAR},
+      </if>
+      <if test="benefit != null" >
+        #{benefit,jdbcType=VARCHAR},
+      </if>
+      <if test="predictcost != null" >
+        #{predictcost,jdbcType=VARCHAR},
+      </if>
+      <if test="predictbxcost != null" >
+        #{predictbxcost,jdbcType=VARCHAR},
+      </if>
+      <if test="percent != null" >
+        #{percent,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=DATE},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null" >
+        #{updatedate,jdbcType=DATE},
+      </if>
+      <if test="updateby != null" >
+        #{updateby,jdbcType=VARCHAR},
+      </if>
+      <if test="eventdesc != null" >
+        #{eventdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="custcount != null" >
+        #{custcount,jdbcType=INTEGER},
+      </if>
+      <if test="nusgocount != null" >
+        #{nusgocount,jdbcType=INTEGER},
+      </if>
+      <if test="plannedgiftamount != null" >
+        #{plannedgiftamount,jdbcType=DOUBLE},
+      </if>
+      <if test="giftname != null" >
+        #{giftname,jdbcType=VARCHAR},
+      </if>
+      <if test="giftreason != null" >
+        #{giftreason,jdbcType=VARCHAR},
+      </if>
+      <if test="needapprovalbyleago != null" >
+        #{needapprovalbyleago,jdbcType=INTEGER},
+      </if>
+      <if test="actualspent != null" >
+        #{actualspent,jdbcType=DOUBLE},
+      </if>
+      <if test="actualeventdate != null" >
+        #{actualeventdate,jdbcType=VARCHAR},
+      </if>
+      <if test="totalexpenseamount != null" >
+        #{totalexpenseamount,jdbcType=DOUBLE},
+      </if>
+      <if test="eventdetails != null" >
+        #{eventdetails,jdbcType=VARCHAR},
+      </if>
+      <if test="salescount != null" >
+        #{salescount,jdbcType=DOUBLE},
+      </if>
+      <if test="nusgoexpenseamount != null" >
+        #{nusgoexpenseamount,jdbcType=DOUBLE},
+      </if>
+      <if test="nusgoexpenses != null" >
+        #{nusgoexpenses,jdbcType=DOUBLE},
+      </if>
+      <if test="nusgonames != null" >
+        #{nusgonames,jdbcType=VARCHAR},
+      </if>
+      <if test="expensedate != null" >
+        #{expensedate,jdbcType=VARCHAR},
+      </if>
+      <if test="locality != null" >
+        #{locality,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cat.autoBean.Nusgoprojectinfo" >
+    update NUSGOProjectInfo
+    <set >
+      <if test="proid != null" >
+        ProID = #{proid,jdbcType=VARCHAR},
+      </if>
+      <if test="protype != null" >
+        ProType = #{protype,jdbcType=VARCHAR},
+      </if>
+      <if test="roleid != null" >
+        RoleID = #{roleid,jdbcType=VARCHAR},
+      </if>
+      <if test="eventdate != null" >
+        EventDate = #{eventdate,jdbcType=VARCHAR},
+      </if>
+      <if test="eventname != null" >
+        EventName = #{eventname,jdbcType=VARCHAR},
+      </if>
+      <if test="purpostofevent != null" >
+        PurpostOfEvent = #{purpostofevent,jdbcType=VARCHAR},
+      </if>
+      <if test="benefit != null" >
+        Benefit = #{benefit,jdbcType=VARCHAR},
+      </if>
+      <if test="predictcost != null" >
+        PredictCost = #{predictcost,jdbcType=VARCHAR},
+      </if>
+      <if test="predictbxcost != null" >
+        predictbxcost = #{predictbxcost,jdbcType=VARCHAR},
+      </if>
+      <if test="percent != null" >
+        Percent = #{percent,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        CreateDate = #{createdate,jdbcType=DATE},
+      </if>
+      <if test="createby != null" >
+        CreateBy = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null" >
+        UpdateDate = #{updatedate,jdbcType=DATE},
+      </if>
+      <if test="updateby != null" >
+        UpdateBy = #{updateby,jdbcType=VARCHAR},
+      </if>
+      <if test="eventdesc != null" >
+        EventDesc = #{eventdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="custcount != null" >
+        CustCount = #{custcount,jdbcType=INTEGER},
+      </if>
+      <if test="nusgocount != null" >
+        NUSGOCount = #{nusgocount,jdbcType=INTEGER},
+      </if>
+      <if test="plannedgiftamount != null" >
+        PlannedGiftAmount = #{plannedgiftamount,jdbcType=DOUBLE},
+      </if>
+      <if test="giftname != null" >
+        GiftName = #{giftname,jdbcType=VARCHAR},
+      </if>
+      <if test="giftreason != null" >
+        GiftReason = #{giftreason,jdbcType=VARCHAR},
+      </if>
+      <if test="needapprovalbyleago != null" >
+        NeedApprovalByLeago = #{needapprovalbyleago,jdbcType=INTEGER},
+      </if>
+      <if test="actualspent != null" >
+        ActualSpent = #{actualspent,jdbcType=DOUBLE},
+      </if>
+      <if test="actualeventdate != null" >
+        ActualEventDate = #{actualeventdate,jdbcType=VARCHAR},
+      </if>
+      <if test="totalexpenseamount != null" >
+        TotalExpenseAmount = #{totalexpenseamount,jdbcType=DOUBLE},
+      </if>
+      <if test="eventdetails != null" >
+        EventDetails = #{eventdetails,jdbcType=VARCHAR},
+      </if>
+      <if test="salescount != null" >
+        SalesCount = #{salescount,jdbcType=DOUBLE},
+      </if>
+      <if test="nusgoexpenseamount != null" >
+        NUSGOExpenseAmount = #{nusgoexpenseamount,jdbcType=DOUBLE},
+      </if>
+      <if test="nusgoexpenses != null" >
+        NusgoExpenses = #{nusgoexpenses,jdbcType=DOUBLE},
+      </if>
+      <if test="nusgonames != null" >
+        NusgoNames = #{nusgonames,jdbcType=VARCHAR},
+      </if>
+      <if test="expensedate != null" >
+        ExpenseDate = #{expensedate,jdbcType=VARCHAR},
+      </if>
+      <if test="locality != null" >
+        Locality = #{locality,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cat.autoBean.Nusgoprojectinfo" >
+    update NUSGOProjectInfo
+    set ProID = #{proid,jdbcType=VARCHAR},
+      ProType = #{protype,jdbcType=VARCHAR},
+      RoleID = #{roleid,jdbcType=VARCHAR},
+      EventDate = #{eventdate,jdbcType=VARCHAR},
+      EventName = #{eventname,jdbcType=VARCHAR},
+      PurpostOfEvent = #{purpostofevent,jdbcType=VARCHAR},
+      Benefit = #{benefit,jdbcType=VARCHAR},
+      PredictCost = #{predictcost,jdbcType=VARCHAR},
+      predictbxcost = #{predictbxcost,jdbcType=VARCHAR},
+      Percent = #{percent,jdbcType=VARCHAR},
+      CreateDate = #{createdate,jdbcType=DATE},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      UpdateDate = #{updatedate,jdbcType=DATE},
+      UpdateBy = #{updateby,jdbcType=VARCHAR},
+      EventDesc = #{eventdesc,jdbcType=VARCHAR},
+      CustCount = #{custcount,jdbcType=INTEGER},
+      NUSGOCount = #{nusgocount,jdbcType=INTEGER},
+      PlannedGiftAmount = #{plannedgiftamount,jdbcType=DOUBLE},
+      GiftName = #{giftname,jdbcType=VARCHAR},
+      GiftReason = #{giftreason,jdbcType=VARCHAR},
+      NeedApprovalByLeago = #{needapprovalbyleago,jdbcType=INTEGER},
+      ActualSpent = #{actualspent,jdbcType=DOUBLE},
+      ActualEventDate = #{actualeventdate,jdbcType=VARCHAR},
+      TotalExpenseAmount = #{totalexpenseamount,jdbcType=DOUBLE},
+      EventDetails = #{eventdetails,jdbcType=VARCHAR},
+      SalesCount = #{salescount,jdbcType=DOUBLE},
+      NUSGOExpenseAmount = #{nusgoexpenseamount,jdbcType=DOUBLE},
+      NusgoExpenses = #{nusgoexpenses,jdbcType=DOUBLE},
+      NusgoNames = #{nusgonames,jdbcType=VARCHAR},
+      ExpenseDate = #{expensedate,jdbcType=VARCHAR},
+      Locality = #{locality,jdbcType=VARCHAR}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

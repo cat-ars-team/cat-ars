@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cat.dao.ILevelInfoDAO" >
+  <resultMap id="map" type="LevelInfo" >
+    <result column="Id" property="id" jdbcType="INTEGER" />
+    <result column="LEVEL_ID" property="levelId" jdbcType="VARCHAR" />
+    <result column="LEVEL_NAME" property="levelName" jdbcType="VARCHAR" />
+    <result column="CUST_NUM1" property="custNum1" jdbcType="VARCHAR" />
+    <result column="CUST_NUM2" property="custNum2" jdbcType="VARCHAR" />
+    <result column="ACT_PLACE" property="actPlace" jdbcType="VARCHAR" />
+    <result column="INDUS_SEG" property="indusSeg" jdbcType="VARCHAR" />
+    <result column="PEOD_SUP" property="peodSup" jdbcType="VARCHAR" />
+    <result column="TECH_MANG" property="techMang" jdbcType="VARCHAR" />
+    <result column="DEMO_STAC" property="demoStac" jdbcType="VARCHAR" />
+    <result column="RENT_USED" property="rentUsed" jdbcType="VARCHAR" />
+    <result column="SPO_USD" property="spoUsd" jdbcType="VARCHAR" />
+    <result column="SPO_CH" property="spoCh" jdbcType="VARCHAR" />
+    <result column="INS_TIME" property="insTime" jdbcType="DATE" />
+    <result column="INS_EMP" property="insEmp" jdbcType="VARCHAR" />
+    <result column="UPD_TIME" property="updTime" jdbcType="DATE" />
+    <result column="cat_rat" property="catRat" jdbcType="VARCHAR" />
+    <result column="UPD_EMP" property="updEmp" jdbcType="VARCHAR" />
+    <result column="DEMO" property="demo" jdbcType="VARCHAR" />
+  </resultMap>
+  
+ 	
+ 	<select id="list" resultMap="map">
+ 		select * from level_info order by level_id
+ 	</select>
+ 	
+ 	<select id="getbylevel" resultMap="map" parameterType="LevelInfo">
+ 		select * from level_info where level_id = #{levelId}
+ 	</select>
+ 	
+  
+  
+ </mapper>

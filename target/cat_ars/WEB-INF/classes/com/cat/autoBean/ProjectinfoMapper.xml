@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cat.autoBean.ProjectinfoMapper" >
+  <resultMap id="BaseResultMap" type="com.cat.autoBean.Projectinfo" >
+    <id column="Id" property="id" jdbcType="INTEGER" />
+    <result column="ProID" property="proid" jdbcType="VARCHAR" />
+    <result column="ProType" property="protype" jdbcType="VARCHAR" />
+    <result column="RoleID" property="roleid" jdbcType="VARCHAR" />
+    <result column="Level" property="level" jdbcType="VARCHAR" />
+    <result column="CustCount" property="custcount" jdbcType="VARCHAR" />
+    <result column="ProTime" property="protime" jdbcType="VARCHAR" />
+    <result column="ProProvince" property="proprovince" jdbcType="VARCHAR" />
+    <result column="ProCity" property="procity" jdbcType="VARCHAR" />
+    <result column="RATI_YN" property="ratiYn" jdbcType="VARCHAR" />
+    <result column="CreateTime" property="createtime" jdbcType="DATE" />
+    <result column="CreateBy" property="createby" jdbcType="VARCHAR" />
+    <result column="UpdateTime" property="updatetime" jdbcType="DATE" />
+    <result column="UpdateBy" property="updateby" jdbcType="VARCHAR" />
+    <result column="CUST_STATE" property="custState" jdbcType="VARCHAR" />
+    <result column="fact_id" property="factId" jdbcType="VARCHAR" />
+    <result column="totalCust" property="totalcust" jdbcType="VARCHAR" />
+    <result column="appReim" property="appreim" jdbcType="VARCHAR" />
+    <result column="IsSpecilal" property="isspecilal" jdbcType="INTEGER" />
+    <result column="NoZFGY" property="nozfgy" jdbcType="VARCHAR" />
+    <result column="IsNusgo" property="isnusgo" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Id, ProID, ProType, RoleID, Level, CustCount, ProTime, ProProvince, ProCity, RATI_YN, 
+    CreateTime, CreateBy, UpdateTime, UpdateBy, CUST_STATE, fact_id, totalCust, appReim, 
+    IsSpecilal, NoZFGY, IsNusgo
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from projectinfo
+    where Id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from projectinfo
+    where Id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cat.autoBean.Projectinfo" >
+    insert into projectinfo (Id, ProID, ProType, 
+      RoleID, Level, CustCount, 
+      ProTime, ProProvince, ProCity, 
+      RATI_YN, CreateTime, CreateBy, 
+      UpdateTime, UpdateBy, CUST_STATE, 
+      fact_id, totalCust, appReim, 
+      IsSpecilal, NoZFGY, IsNusgo
+      )
+    values (#{id,jdbcType=INTEGER}, #{proid,jdbcType=VARCHAR}, #{protype,jdbcType=VARCHAR}, 
+      #{roleid,jdbcType=VARCHAR}, #{level,jdbcType=VARCHAR}, #{custcount,jdbcType=VARCHAR}, 
+      #{protime,jdbcType=VARCHAR}, #{proprovince,jdbcType=VARCHAR}, #{procity,jdbcType=VARCHAR}, 
+      #{ratiYn,jdbcType=VARCHAR}, #{createtime,jdbcType=DATE}, #{createby,jdbcType=VARCHAR}, 
+      #{updatetime,jdbcType=DATE}, #{updateby,jdbcType=VARCHAR}, #{custState,jdbcType=VARCHAR}, 
+      #{factId,jdbcType=VARCHAR}, #{totalcust,jdbcType=VARCHAR}, #{appreim,jdbcType=VARCHAR}, 
+      #{isspecilal,jdbcType=INTEGER}, #{nozfgy,jdbcType=VARCHAR}, #{isnusgo,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cat.autoBean.Projectinfo" >
+    insert into projectinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="proid != null" >
+        ProID,
+      </if>
+      <if test="protype != null" >
+        ProType,
+      </if>
+      <if test="roleid != null" >
+        RoleID,
+      </if>
+      <if test="level != null" >
+        Level,
+      </if>
+      <if test="custcount != null" >
+        CustCount,
+      </if>
+      <if test="protime != null" >
+        ProTime,
+      </if>
+      <if test="proprovince != null" >
+        ProProvince,
+      </if>
+      <if test="procity != null" >
+        ProCity,
+      </if>
+      <if test="ratiYn != null" >
+        RATI_YN,
+      </if>
+      <if test="createtime != null" >
+        CreateTime,
+      </if>
+      <if test="createby != null" >
+        CreateBy,
+      </if>
+      <if test="updatetime != null" >
+        UpdateTime,
+      </if>
+      <if test="updateby != null" >
+        UpdateBy,
+      </if>
+      <if test="custState != null" >
+        CUST_STATE,
+      </if>
+      <if test="factId != null" >
+        fact_id,
+      </if>
+      <if test="totalcust != null" >
+        totalCust,
+      </if>
+      <if test="appreim != null" >
+        appReim,
+      </if>
+      <if test="isspecilal != null" >
+        IsSpecilal,
+      </if>
+      <if test="nozfgy != null" >
+        NoZFGY,
+      </if>
+      <if test="isnusgo != null" >
+        IsNusgo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="proid != null" >
+        #{proid,jdbcType=VARCHAR},
+      </if>
+      <if test="protype != null" >
+        #{protype,jdbcType=VARCHAR},
+      </if>
+      <if test="roleid != null" >
+        #{roleid,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null" >
+        #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="custcount != null" >
+        #{custcount,jdbcType=VARCHAR},
+      </if>
+      <if test="protime != null" >
+        #{protime,jdbcType=VARCHAR},
+      </if>
+      <if test="proprovince != null" >
+        #{proprovince,jdbcType=VARCHAR},
+      </if>
+      <if test="procity != null" >
+        #{procity,jdbcType=VARCHAR},
+      </if>
+      <if test="ratiYn != null" >
+        #{ratiYn,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=DATE},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=DATE},
+      </if>
+      <if test="updateby != null" >
+        #{updateby,jdbcType=VARCHAR},
+      </if>
+      <if test="custState != null" >
+        #{custState,jdbcType=VARCHAR},
+      </if>
+      <if test="factId != null" >
+        #{factId,jdbcType=VARCHAR},
+      </if>
+      <if test="totalcust != null" >
+        #{totalcust,jdbcType=VARCHAR},
+      </if>
+      <if test="appreim != null" >
+        #{appreim,jdbcType=VARCHAR},
+      </if>
+      <if test="isspecilal != null" >
+        #{isspecilal,jdbcType=INTEGER},
+      </if>
+      <if test="nozfgy != null" >
+        #{nozfgy,jdbcType=VARCHAR},
+      </if>
+      <if test="isnusgo != null" >
+        #{isnusgo,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cat.autoBean.Projectinfo" >
+    update projectinfo
+    <set >
+      <if test="proid != null" >
+        ProID = #{proid,jdbcType=VARCHAR},
+      </if>
+      <if test="protype != null" >
+        ProType = #{protype,jdbcType=VARCHAR},
+      </if>
+      <if test="roleid != null" >
+        RoleID = #{roleid,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null" >
+        Level = #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="custcount != null" >
+        CustCount = #{custcount,jdbcType=VARCHAR},
+      </if>
+      <if test="protime != null" >
+        ProTime = #{protime,jdbcType=VARCHAR},
+      </if>
+      <if test="proprovince != null" >
+        ProProvince = #{proprovince,jdbcType=VARCHAR},
+      </if>
+      <if test="procity != null" >
+        ProCity = #{procity,jdbcType=VARCHAR},
+      </if>
+      <if test="ratiYn != null" >
+        RATI_YN = #{ratiYn,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        CreateTime = #{createtime,jdbcType=DATE},
+      </if>
+      <if test="createby != null" >
+        CreateBy = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        UpdateTime = #{updatetime,jdbcType=DATE},
+      </if>
+      <if test="updateby != null" >
+        UpdateBy = #{updateby,jdbcType=VARCHAR},
+      </if>
+      <if test="custState != null" >
+        CUST_STATE = #{custState,jdbcType=VARCHAR},
+      </if>
+      <if test="factId != null" >
+        fact_id = #{factId,jdbcType=VARCHAR},
+      </if>
+      <if test="totalcust != null" >
+        totalCust = #{totalcust,jdbcType=VARCHAR},
+      </if>
+      <if test="appreim != null" >
+        appReim = #{appreim,jdbcType=VARCHAR},
+      </if>
+      <if test="isspecilal != null" >
+        IsSpecilal = #{isspecilal,jdbcType=INTEGER},
+      </if>
+      <if test="nozfgy != null" >
+        NoZFGY = #{nozfgy,jdbcType=VARCHAR},
+      </if>
+      <if test="isnusgo != null" >
+        IsNusgo = #{isnusgo,jdbcType=INTEGER},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cat.autoBean.Projectinfo" >
+    update projectinfo
+    set ProID = #{proid,jdbcType=VARCHAR},
+      ProType = #{protype,jdbcType=VARCHAR},
+      RoleID = #{roleid,jdbcType=VARCHAR},
+      Level = #{level,jdbcType=VARCHAR},
+      CustCount = #{custcount,jdbcType=VARCHAR},
+      ProTime = #{protime,jdbcType=VARCHAR},
+      ProProvince = #{proprovince,jdbcType=VARCHAR},
+      ProCity = #{procity,jdbcType=VARCHAR},
+      RATI_YN = #{ratiYn,jdbcType=VARCHAR},
+      CreateTime = #{createtime,jdbcType=DATE},
+      CreateBy = #{createby,jdbcType=VARCHAR},
+      UpdateTime = #{updatetime,jdbcType=DATE},
+      UpdateBy = #{updateby,jdbcType=VARCHAR},
+      CUST_STATE = #{custState,jdbcType=VARCHAR},
+      fact_id = #{factId,jdbcType=VARCHAR},
+      totalCust = #{totalcust,jdbcType=VARCHAR},
+      appReim = #{appreim,jdbcType=VARCHAR},
+      IsSpecilal = #{isspecilal,jdbcType=INTEGER},
+      NoZFGY = #{nozfgy,jdbcType=VARCHAR},
+      IsNusgo = #{isnusgo,jdbcType=INTEGER}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

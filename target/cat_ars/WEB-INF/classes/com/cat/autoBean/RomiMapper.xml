@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cat.autoBean.RomiMapper" >
+  <resultMap id="BaseResultMap" type="com.cat.autoBean.Romi" >
+    <result column="ID" property="id" jdbcType="INTEGER" />
+    <result column="AGNT_ID" property="agntId" jdbcType="VARCHAR" />
+    <result column="PRO_ID" property="proId" jdbcType="VARCHAR" />
+    <result column="CURR_CUST" property="currCust" jdbcType="VARCHAR" />
+    <result column="POTEN_CUST" property="potenCust" jdbcType="VARCHAR" />
+    <result column="REGIS_CUST" property="regisCust" jdbcType="VARCHAR" />
+    <result column="NEW_SALELD" property="newSaleld" jdbcType="VARCHAR" />
+    <result column="SALELD_CONRATE" property="saleldConrate" jdbcType="VARCHAR" />
+    <result column="DISC_MAC" property="discMac" jdbcType="VARCHAR" />
+    <result column="DETE_QUA" property="deteQua" jdbcType="VARCHAR" />
+    <result column="FORM_PLAN" property="formPlan" jdbcType="VARCHAR" />
+    <result column="DEVE_PROG" property="deveProg" jdbcType="VARCHAR" />
+    <result column="OPEN_OPPOR" property="openOppor" jdbcType="VARCHAR" />
+    <result column="WIN_ORDER" property="winOrder" jdbcType="VARCHAR" />
+    <result column="LOST_SALES" property="lostSales" jdbcType="VARCHAR" />
+    <result column="NO_TRANS" property="noTrans" jdbcType="VARCHAR" />
+    <result column="TOTAL_MAC" property="totalMac" jdbcType="VARCHAR" />
+    <result column="MAC_GEN_RATE" property="macGenRate" jdbcType="VARCHAR" />
+    <result column="DOD_CUSTNUM" property="dodCustnum" jdbcType="VARCHAR" />
+    <result column="CreateTime" property="createtime" jdbcType="DATE" />
+    <result column="CreateBy" property="createby" jdbcType="INTEGER" />
+    <result column="UpdateTime" property="updatetime" jdbcType="DATE" />
+    <result column="UpdateBy" property="updateby" jdbcType="INTEGER" />
+    <result column="WIN_ORDERS" property="winOrders" jdbcType="VARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.cat.autoBean.Romi" >
+    insert into romi (ID, AGNT_ID, PRO_ID, 
+      CURR_CUST, POTEN_CUST, REGIS_CUST, 
+      NEW_SALELD, SALELD_CONRATE, DISC_MAC, 
+      DETE_QUA, FORM_PLAN, DEVE_PROG, 
+      OPEN_OPPOR, WIN_ORDER, LOST_SALES, 
+      NO_TRANS, TOTAL_MAC, MAC_GEN_RATE, 
+      DOD_CUSTNUM, CreateTime, CreateBy, 
+      UpdateTime, UpdateBy, WIN_ORDERS
+      )
+    values (#{id,jdbcType=INTEGER}, #{agntId,jdbcType=VARCHAR}, #{proId,jdbcType=VARCHAR}, 
+      #{currCust,jdbcType=VARCHAR}, #{potenCust,jdbcType=VARCHAR}, #{regisCust,jdbcType=VARCHAR}, 
+      #{newSaleld,jdbcType=VARCHAR}, #{saleldConrate,jdbcType=VARCHAR}, #{discMac,jdbcType=VARCHAR}, 
+      #{deteQua,jdbcType=VARCHAR}, #{formPlan,jdbcType=VARCHAR}, #{deveProg,jdbcType=VARCHAR}, 
+      #{openOppor,jdbcType=VARCHAR}, #{winOrder,jdbcType=VARCHAR}, #{lostSales,jdbcType=VARCHAR}, 
+      #{noTrans,jdbcType=VARCHAR}, #{totalMac,jdbcType=VARCHAR}, #{macGenRate,jdbcType=VARCHAR}, 
+      #{dodCustnum,jdbcType=VARCHAR}, #{createtime,jdbcType=DATE}, #{createby,jdbcType=INTEGER}, 
+      #{updatetime,jdbcType=DATE}, #{updateby,jdbcType=INTEGER}, #{winOrders,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cat.autoBean.Romi" >
+    insert into romi
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="agntId != null" >
+        AGNT_ID,
+      </if>
+      <if test="proId != null" >
+        PRO_ID,
+      </if>
+      <if test="currCust != null" >
+        CURR_CUST,
+      </if>
+      <if test="potenCust != null" >
+        POTEN_CUST,
+      </if>
+      <if test="regisCust != null" >
+        REGIS_CUST,
+      </if>
+      <if test="newSaleld != null" >
+        NEW_SALELD,
+      </if>
+      <if test="saleldConrate != null" >
+        SALELD_CONRATE,
+      </if>
+      <if test="discMac != null" >
+        DISC_MAC,
+      </if>
+      <if test="deteQua != null" >
+        DETE_QUA,
+      </if>
+      <if test="formPlan != null" >
+        FORM_PLAN,
+      </if>
+      <if test="deveProg != null" >
+        DEVE_PROG,
+      </if>
+      <if test="openOppor != null" >
+        OPEN_OPPOR,
+      </if>
+      <if test="winOrder != null" >
+        WIN_ORDER,
+      </if>
+      <if test="lostSales != null" >
+        LOST_SALES,
+      </if>
+      <if test="noTrans != null" >
+        NO_TRANS,
+      </if>
+      <if test="totalMac != null" >
+        TOTAL_MAC,
+      </if>
+      <if test="macGenRate != null" >
+        MAC_GEN_RATE,
+      </if>
+      <if test="dodCustnum != null" >
+        DOD_CUSTNUM,
+      </if>
+      <if test="createtime != null" >
+        CreateTime,
+      </if>
+      <if test="createby != null" >
+        CreateBy,
+      </if>
+      <if test="updatetime != null" >
+        UpdateTime,
+      </if>
+      <if test="updateby != null" >
+        UpdateBy,
+      </if>
+      <if test="winOrders != null" >
+        WIN_ORDERS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="agntId != null" >
+        #{agntId,jdbcType=VARCHAR},
+      </if>
+      <if test="proId != null" >
+        #{proId,jdbcType=VARCHAR},
+      </if>
+      <if test="currCust != null" >
+        #{currCust,jdbcType=VARCHAR},
+      </if>
+      <if test="potenCust != null" >
+        #{potenCust,jdbcType=VARCHAR},
+      </if>
+      <if test="regisCust != null" >
+        #{regisCust,jdbcType=VARCHAR},
+      </if>
+      <if test="newSaleld != null" >
+        #{newSaleld,jdbcType=VARCHAR},
+      </if>
+      <if test="saleldConrate != null" >
+        #{saleldConrate,jdbcType=VARCHAR},
+      </if>
+      <if test="discMac != null" >
+        #{discMac,jdbcType=VARCHAR},
+      </if>
+      <if test="deteQua != null" >
+        #{deteQua,jdbcType=VARCHAR},
+      </if>
+      <if test="formPlan != null" >
+        #{formPlan,jdbcType=VARCHAR},
+      </if>
+      <if test="deveProg != null" >
+        #{deveProg,jdbcType=VARCHAR},
+      </if>
+      <if test="openOppor != null" >
+        #{openOppor,jdbcType=VARCHAR},
+      </if>
+      <if test="winOrder != null" >
+        #{winOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="lostSales != null" >
+        #{lostSales,jdbcType=VARCHAR},
+      </if>
+      <if test="noTrans != null" >
+        #{noTrans,jdbcType=VARCHAR},
+      </if>
+      <if test="totalMac != null" >
+        #{totalMac,jdbcType=VARCHAR},
+      </if>
+      <if test="macGenRate != null" >
+        #{macGenRate,jdbcType=VARCHAR},
+      </if>
+      <if test="dodCustnum != null" >
+        #{dodCustnum,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=DATE},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=INTEGER},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=DATE},
+      </if>
+      <if test="updateby != null" >
+        #{updateby,jdbcType=INTEGER},
+      </if>
+      <if test="winOrders != null" >
+        #{winOrders,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

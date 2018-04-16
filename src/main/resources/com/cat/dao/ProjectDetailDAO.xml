@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cat.dao.IProjectDetailDAO" >
+  <resultMap id="map" type="ProjectDetail" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="PRO_ID" property="proId" jdbcType="VARCHAR" />
+    <result column="RoleName" property="rolename" jdbcType="VARCHAR" />
+    <result column="INDUS_NUM" property="indusNum" jdbcType="VARCHAR" />
+    <result column="PARTS_SHOW" property="partsShow" jdbcType="VARCHAR" />
+    <result column="PARTS_PROMO" property="partsPromo" jdbcType="VARCHAR" />
+    <result column="PARTS_WH" property="partsWh" jdbcType="VARCHAR" />
+    <result column="SERVICE_WS" property="serviceWs" jdbcType="VARCHAR" />
+    <result column="TOOLS_POLLU" property="toolsPollu" jdbcType="VARCHAR" />
+    <result column="SPE_SERVICES" property="speServices" jdbcType="VARCHAR" />
+    <result column="PROMOTION" property="promotion" jdbcType="VARCHAR" />
+    <result column="GPS_SHOW" property="gpsShow" jdbcType="VARCHAR" />
+    <result column="INTRO_DEMO" property="introDemo" jdbcType="VARCHAR" />
+    <result column="DYNA_DEMO" property="dynaDemo" jdbcType="VARCHAR" />
+    <result column="STATIC_DEMO" property="staticDemo" jdbcType="VARCHAR" />
+    <result column="SHOWCASE_CAT" property="showcaseCat" jdbcType="VARCHAR" />
+    <result column="SHOWCASE_RU" property="showcaseRu" jdbcType="VARCHAR" />
+    <result column="CreateTime" property="createtime" jdbcType="DATE" />
+    <result column="CreateBy" property="createby" jdbcType="INTEGER" />
+    <result column="UpdateTime" property="updatetime" jdbcType="DATE" />
+    <result column="UpdateBy" property="updateby" jdbcType="INTEGER" />
+    <result column="TITLE" property="title" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  
+   	 <select id="getbyproid" parameterType="ProjectDetail" resultMap="map">
+			select * from projectdetail where PRO_ID=  #{proId}
+	</select>
+  
+  
+   <insert id="add" parameterType="ProjectDetail" >
+    insert into projectdetail (PRO_ID, RoleName, 
+      INDUS_NUM, PARTS_SHOW, PARTS_PROMO, 
+      PARTS_WH, SERVICE_WS, TOOLS_POLLU, 
+      SPE_SERVICES, PROMOTION, GPS_SHOW, 
+      INTRO_DEMO, DYNA_DEMO, STATIC_DEMO, 
+      SHOWCASE_CAT, SHOWCASE_RU, CreateTime, 
+      CreateBy, UpdateTime, UpdateBy, 
+      TITLE)
+    values ( #{proId,jdbcType=VARCHAR}, #{rolename,jdbcType=VARCHAR}, 
+      #{indusNum,jdbcType=VARCHAR}, #{partsShow,jdbcType=VARCHAR}, #{partsPromo,jdbcType=VARCHAR}, 
+      #{partsWh,jdbcType=VARCHAR}, #{serviceWs,jdbcType=VARCHAR}, #{toolsPollu,jdbcType=VARCHAR}, 
+      #{speServices,jdbcType=VARCHAR}, #{promotion,jdbcType=VARCHAR}, #{gpsShow,jdbcType=VARCHAR}, 
+      #{introDemo,jdbcType=VARCHAR}, #{dynaDemo,jdbcType=VARCHAR}, #{staticDemo,jdbcType=VARCHAR}, 
+      #{showcaseCat,jdbcType=VARCHAR}, #{showcaseRu,jdbcType=VARCHAR}, #{createtime,jdbcType=DATE}, 
+      #{createby,jdbcType=INTEGER}, #{updatetime,jdbcType=DATE}, #{updateby,jdbcType=INTEGER}, 
+      #{title,jdbcType=VARCHAR})
+  </insert>
+  
+    <delete id="delete" parameterType="ProjectDetail">
+  		delete from projectdetail where PRO_ID=#{proId}
+  	</delete>
+  	
+  	
+  </mapper>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cat.dao.IISFProjectFlowDAO" >
+  	<resultMap id="map" type="ISFProjectFlow" >
+    <result column="ProID" property="proid" jdbcType="VARCHAR" />
+    <result column="bxStatus" property="bxstatus" jdbcType="INTEGER" />
+    <result column="isSubBXZL" property="issubbxzl" jdbcType="INTEGER" />
+    <result column="isSubCustInfo" property="issubcustinfo" jdbcType="INTEGER" />
+    <result column="isSubReceipt" property="issubreceipt" jdbcType="INTEGER" />
+    <result column="SpecialStatus" property="specialstatus" jdbcType="INTEGER" />
+    <result column="isSubjbxx" property="issubjbxx" jdbcType="INTEGER" />
+    <result column="CreateBy" property="createby" jdbcType="INTEGER" />
+    <result column="CreateTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="UpdateBy" property="updateby" jdbcType="INTEGER" />
+    <result column="UpdateTime" property="updatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  
+  
+  <select id="getByProID" parameterType="ISFProjectFlow" resultMap="map">
+  		select * from isfproject_flow where ProID=#{proid}
+  </select>
+  
+  
+  
+  <insert id="add" parameterType="ISFProjectFlow" >
+    insert into isfproject_flow (ProID, bxStatus, isSubBXZL, 
+      isSubCustInfo, isSubReceipt, SpecialStatus,
+       isSubjbxx, CreateBy, CreateTime, UpdateBy,  UpdateTime)
+    values (#{proid,jdbcType=VARCHAR}, #{bxstatus,jdbcType=INTEGER}, #{issubbxzl,jdbcType=INTEGER}, 
+      #{issubcustinfo,jdbcType=INTEGER}, #{issubreceipt,jdbcType=INTEGER}, #{specialstatus,jdbcType=INTEGER},
+       #{issubjbxx,jdbcType=INTEGER}, 
+      #{createby,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, #{updateby,jdbcType=INTEGER} 
+      , #{updatetime,jdbcType=TIMESTAMP})
+  </insert>
+  
+  
+  <!-- 修改角色 -->
+	<update id="update" parameterType="ISFProjectFlow">
+		update isfproject_flow
+		<set>
+			<if test="bxstatus!=null">
+				bxStatus=#{bxstatus},
+			</if>		
+			<if test="issubjbxx!=null">
+				isSubjbxx=#{issubjbxx},
+			</if>
+			
+			<if test="issubbxzl!=null">
+				isSubBXZL=#{issubbxzl},
+			</if>
+			
+			<if test="issubcustinfo!=null">
+				isSubCustInfo=#{issubcustinfo},
+			</if>
+			
+			<if test="issubreceipt!=null">
+				isSubReceipt=#{issubreceipt},
+			</if>
+			
+			<if test="specialstatus!=null">
+				SpecialStatus=#{specialstatus},
+			</if>
+			
+			<if test="updateby!=null">
+				UpdateBy=#{updateby},
+			</if>
+			
+			<if test="updatetime!=null">
+				UpdateTime=#{updatetime},
+			</if>
+					
+		</set>
+		
+		where ProID = #{proid}
+	</update>
+  
+  	<delete id="delete" parameterType="ISFProjectFlow">
+  		delete from isfproject_flow where proid=#{proid}
+  	</delete>
+  
+  
+ </mapper>

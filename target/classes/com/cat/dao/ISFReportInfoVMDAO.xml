@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cat.dao.IISFReportVMDAO">
+
+
+  <resultMap id="map" type="ISFReportInfoVM" >
+    <result column="pro_id" property="proId" jdbcType="VARCHAR" />
+    <result column="level" property="level" jdbcType="VARCHAR" />
+    <result column="pro_time" property="proTime" jdbcType="DATE" />
+    <result column="pro_area" property="proArea" jdbcType="VARCHAR" />
+    <result column="pro_aread" property="proAread" jdbcType="VARCHAR" />
+    <result column="total_cust" property="totalCust" jdbcType="VARCHAR" />
+    <result column="app_reim" property="appReim" jdbcType="VARCHAR" />
+    <result column="cust_num" property="custNum" jdbcType="VARCHAR" />
+    <result column="dod_custnum" property="dodCustnum" jdbcType="VARCHAR" />
+    <result column="win_order" property="winOrder" jdbcType="VARCHAR" />
+    <result column="saleld_conrate" property="saleldConrate" jdbcType="VARCHAR" />
+    <result column="total_mac" property="totalMac" jdbcType="VARCHAR" />
+    <result column="new_saleld" property="newSaleld" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  
+  <!-- 查询ISFReport list -->
+	<select id="list" parameterType="ISFReportInfoVM"   resultMap="map">
+		select  
+			a.pro_id,a.level,a.pro_time,a.pro_area,a.pro_aread,c.total_cust,c.app_reim,c.cust_num,b.dod_custnum,b.win_order,b.saleld_conrate,b.total_mac,b.new_saleld 
+		from isfreportinfovm a ,projectdetailinfo b,projectsum c 
+		where 
+			  a.pro_id=b.pro_id 
+			and a.pro_id=c.pro_id 
+			and a.rati_yn='1'  
+			and a.pro_type='ISF' 
+		<if test="proId!=null and proId!='' ">
+			and a.pro_id = #{proId}
+		</if>	
+		group by a.pro_time desc,c.pro_id desc  
+		order by pro_id desc
+		<if test="start!=-1">
+			limit #{start},#{length}
+		</if>
+
+	</select>
+  
+  
+   
+  <!-- 查询ISFReport list -->
+	<select id="getcount" parameterType="ISFReportInfoVM"   resultType="long">
+		select  
+			count(1) 
+		from isfreportinfovm a ,projectdetailinfo b,projectsum c 
+		where 
+			  a.pro_id=b.pro_id 
+			and a.pro_id=c.pro_id 
+			and a.rati_yn='1'  
+			and a.pro_type='ISF' 
+		<if test="proId!=null and proId!='' ">
+			and a.pro_id = #{proId}
+		</if>	
+		
+		 
+
+	</select>
+  
+  
+  <!-- 查询ISFReport list -->
+	<select id="listTotal" parameterType="ISFReportInfoVM"    resultMap="map">
+		select  
+			'总计' as pro_id,'-' as level,'2018-01-01' as pro_time,'-' as pro_area,
+			'-' as pro_aread,sum(c.total_cust) as total_cust ,sum(c.app_reim) as app_reim,
+			sum(c.cust_num) as cust_num ,sum(b.dod_custnum) as dod_custnum,
+			sum(b.win_order) as win_order,sum(b.saleld_conrate) as saleld_conrate,
+			sum(b.total_mac) as total_mac,sum(b.new_saleld) as new_saleld  
+			from isfreportinfovm a ,projectdetailinfo b,projectsum c 
+		where 
+			a.pro_id=b.pro_id 
+			and a.pro_id=c.pro_id 
+			and a.rati_yn='1'  
+			and a.pro_type='ISF' 
+		<if test="proId!=null and proId!=''">
+			and a.pro_id = #{proId}
+		</if>	
+		group by a.pro_time desc,c.pro_id desc  limit 10
+
+	</select>
+  
+  
+  
+ </mapper>
